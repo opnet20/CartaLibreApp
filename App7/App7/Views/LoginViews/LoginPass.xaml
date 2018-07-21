@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="App7.Views.LoginPass">
+
+  <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+    <Frame Margin="10" Padding="5">
+      <StackLayout>
+          <Grid BackgroundColor="#EF4F50">
+            <Label Text="BIENVENIDO" Margin="4" TextColor="White" VerticalTextAlignment="Center" VerticalOptions="Center" LineBreakMode="WordWrap"/>
+          </Grid>
+        <Image  Source="Welcomeo.png" Margin="10,10,10,10" HeightRequest="80"></Image>
+        <!--<Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+            <Label Text="Selecciona tu localidad" FontSize="Small" FontAttributes="Bold" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+          </Grid>
+         <Picker x:Name="Ciudad1" Margin="10,0,12,0" Title="Ciudad" HorizontalOptions="FillAndExpand" SelectedIndexChanged="Ciudad_SelectedIndexChanged">
+            <Picker.Items>
+              <x:String>Arequipa</x:String>
+              <x:String>Huaraz</x:String>
+              <x:String>Lima</x:String>
+              <x:String>Piura</x:String>
+              <x:String>Sullana</x:String>
+              <x:String>Trujillo</x:String>
+            </Picker.Items>
+          </Picker>-->
+        <Label Text="Antes de comentar" FontSize="Small"
+               VerticalTextAlignment="Center" VerticalOptions="Center" Margin="10"/>
+       <Label Text="No olvides completar tus datos en tu perfil" FontSize="Small" 
+              VerticalTextAlignment="Center" VerticalOptions="Center" Margin="10"/>
+        <Button x:Name="guardarButton"
+          Text="Siguiente"
+                BackgroundColor="#F7A305"
+                TextColor="White"
+                HeightRequest="50"
+                Clicked="Guardar_Click"
+                Grid.Column="1"></Button>
+        <ActivityIndicator x:Name="loading" Color="Red" />
+      </StackLayout>
+    </Frame>
+  </StackLayout>
+</popup:PopupPage>

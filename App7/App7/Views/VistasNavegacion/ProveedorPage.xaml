@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            	xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+              xmlns:design="clr-namespace:App7;assembly=App7"
+              xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+              xmlns:controls2="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" 
+             xmlns:local="clr-namespace:App7.Views.Proveedor;assembly=App7"
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+          xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+              Title="{Binding Proveedor.Nombre}"
+             BackgroundColor="White"
+	          IsBusy="{Binding IsBusy}"
+             x:Class="App7.Views.ProveedorPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+
+      <Style x:Key="DetailTitleStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="6, 0" />
+      </Style>
+
+      <Style x:Key="ActionButtonStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="12" />
+      </Style>
+
+      <Style x:Key="ActionButtonImageStyle" TargetType="Image">
+        <Setter Property="Aspect" Value="AspectFit" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+
+      <!--<Style x:Key="ActionButtonTextStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+      </Style>-->
+
+      <Style x:Key="CoverBackgroundStyle" TargetType="Image">
+        <Setter Property="HeightRequest" Value="200" />
+        <Setter Property="Aspect" Value="AspectFill" />
+        <Setter Property="VerticalOptions" Value="End" />
+      </Style>
+
+      <Style x:Key="PlayStyle" TargetType="Image">
+        <Setter Property="WidthRequest" Value="80" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+      </Style>
+
+      <Color x:Key="DurationColor">#666566</Color>
+
+      <!--<Style x:Key="DurationTextStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource DurationColor}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Margin" Value="6, 0" />
+      </Style>-->
+
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <Grid>
+      <ContentView
+               x:Name="HeaderPanel"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand"
+               Margin="0,-75,0,0">
+        <ContentView.Margin>
+          <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android" Value="0,0,0,0" />
+            <On Platform="iOS" Value="0,-75,0,0" />
+          </OnPlatform>
+        </ContentView.Margin>
+        <Grid>
+            <ffimageloading:CachedImage 	
+                    Source="{Binding Proveedor.ImageUri}" 
+                    Aspect="AspectFill"
+                    HeightRequest="250"
+					          HorizontalOptions="FillAndExpand"
+					          VerticalOptions="Start"
+                    DownsampleToViewSize="True"
+                    FadeAnimationEnabled="True"
+                    LoadingPlaceholder = "tienda.png">
+              <ffimageloading:CachedImage.HeightRequest>
+                  <OnPlatform x:TypeArguments="x:Double">
+                      <On Platform="Android" Value="200" />
+                      <On Platform="iOS" Value="275" />
+                  </OnPlatform>
+              </ffimageloading:CachedImage.HeightRequest>
+          </ffimageloading:CachedImage>        
+        </Grid>
+      </ContentView>
+      <ScrollView
+                x:Name="ParallaxScroll"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+            <Grid RowSpacing="0"
+				        VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="200" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <!--<Image Source="coverbackground" Style="{StaticResource CoverBackgroundStyle}"/>-->
+                    </Grid>
+                   
+                    <StackLayout x:Name="gridList" BackgroundColor="White" Grid.Row="2">
+                      <StackLayout  Grid.Row="1" HorizontalOptions="Center" BackgroundColor="White">
+                            <Label
+                                FontSize="27" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Nombre}"></Label>
+                            <Label
+                              FontSize="16" TextColor="#808080"
+                                 Margin="0,-10,0,0"
+                              HorizontalTextAlignment="Center" 
+                              Text="{Binding Proveedor.Descripcion}"></Label>
+                            <!--<Label
+                              FontSize="14" 
+                              FontAttributes="Bold" Margin="0,-4,0,0"
+                              HorizontalTextAlignment="Center" 
+                              Text="Dirección"></Label>-->
+                            <!--<Label TextColor="Black"
+                              FontSize="14" 
+                              Margin="0,-7,0,0"
+                              HorizontalTextAlignment="Center" 
+                              Text="{Binding Proveedor.Direccion}"></Label>
+                            <Label TextColor="Black"
+                              FontSize="14"
+                              Margin="0,-7,0,0"
+                              HorizontalTextAlignment="Center" 
+                              Text="{Binding Proveedor.Referencia}"></Label>-->
+                      </StackLayout>
+                       <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  Margin="0,-8,0,0">
+                              <Label  x:Name="numSeg" FontAttributes="Italic" Margin="2" 
+                                      TextColor="#808080"
+                                        FontSize="Small" VerticalTextAlignment="Center"></Label>
+                              <Label   FontAttributes="Italic" Text="Seguidores"
+                                        FontSize="Small"  TextColor="#808080" Margin="2" 
+                                        VerticalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <StackLayout  HorizontalOptions="Center" Margin="2">
+                            <StackLayout  Orientation="Horizontal" HorizontalOptions="Center" HeightRequest = "80">
+                               <StackLayout Margin="4,2">
+                                  <Grid>
+                                     <ffimageloading:CachedImage Aspect="AspectFit" 
+                                                                 Source="{Binding Proveedor.Abierto}" 
+                                                                  CacheDuration="14" 
+                                                                  FadeAnimationEnabled="True"
+                                                                  DownsampleToViewSize="True"
+                                                                  Margin="0" >
+                                     </ffimageloading:CachedImage>
+                                     <controls2:ImageButton  BackgroundColor="Transparent"
+                                                              x:Name="abiertocerradoBt"
+                                                              HorizontalOptions="Center">
+                                      </controls2:ImageButton>
+                                  </Grid>
+                                  <Label  Text="{Binding Proveedor.AbiertoDetalle}"
+                                          HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                        FontSize="Small"  TextColor="#EF4F50" Margin="2" 
+                                        VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                                <StackLayout Margin="4,2" x:Name="verMapaStack">
+                                  <Grid>
+                                     <ffimageloading:CachedImage Aspect="AspectFit" 
+                                                                  CacheDuration="14" 
+                                                                  FadeAnimationEnabled="True"
+                                                                  DownsampleToViewSize="True"
+                                                                  Margin="0" 
+                                                                  Source="placeholder.png">
+                                     </ffimageloading:CachedImage>
+                                     <controls2:ImageButton  BackgroundColor="Transparent"
+                                                              x:Name="verMapaBt"
+                                                              HorizontalOptions="Center" 
+                                                              Clicked="VerMapa_Click">
+                                      </controls2:ImageButton>
+                                  </Grid>
+                                  <Label  Text="Ubicar"
+                                          HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                        FontSize="Small"  TextColor="#EF4F50" Margin="2" 
+                                        VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                            
+                                <StackLayout Margin="4,2">
+                                   <Grid>
+                                       <ffimageloading:CachedImage  x:Name="likeImg"
+                                                                    Aspect="AspectFit" 
+                                                                    CacheDuration="14" 
+                                                                  
+                                                                    FadeAnimationEnabled="True"
+                                                                    DownsampleToViewSize="True"
+                                                                    Margin="0">
+                                       </ffimageloading:CachedImage>
+                                       <controls2:ImageButton   BackgroundColor="Transparent"
+                                                              x:Name="seguirBt2"
+                                                              HorizontalOptions="Center" 
+                                                              Clicked="Seguir_Click">
+                                       </controls2:ImageButton>
+                                   </Grid>
+                                  <Label x:Name="seguirLb" 
+                                          HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                        FontSize="Small"  TextColor="#EF4F50" Margin="2" 
+                                        VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                                <StackLayout Margin="4,2">
+                                  <Grid>
+                                     <ffimageloading:CachedImage Aspect="AspectFit" 
+                                                                  CacheDuration="14" 
+                                                                  FadeAnimationEnabled="True"
+                                                                  DownsampleToViewSize="True"
+                                                                  Source="{Binding Proveedor.ImageCategoria}"
+                                                                  Margin="0" >
+                                     </ffimageloading:CachedImage>
+                                     <controls2:ImageButton  BackgroundColor="Transparent"
+                                                              x:Name="cateBt"
+                                                              HorizontalOptions="Center" 
+                                                              Clicked="Cate_Click">
+                                      </controls2:ImageButton>
+                                  </Grid>
+                                  <Label  Text="Categoría"
+                                          HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                        FontSize="Small"  TextColor="#EF4F50" Margin="2" 
+                                        VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                                <StackLayout Margin="4,2"  x:Name="llamarStack">
+                                  <Grid>
+                                     <ffimageloading:CachedImage Aspect="AspectFit" 
+                                                                  CacheDuration="14" 
+                                                                  FadeAnimationEnabled="True"
+                                                                  DownsampleToViewSize="True"
+                                                                  Margin="0" 
+                                                                  Source="phone.png">
+                                     </ffimageloading:CachedImage>
+                                     <controls2:ImageButton  BackgroundColor="Transparent"
+                                                              x:Name="llamarBt"
+                                                              HorizontalOptions="Center" 
+                                                              Clicked="Llamar_Click">
+                                      </controls2:ImageButton>
+                                  </Grid>
+                                  <Label  Text="Llamar"
+                                          HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                                        FontSize="Small"  TextColor="#EF4F50" Margin="2" 
+                                        VerticalTextAlignment="Center"></Label>
+                                </StackLayout>
+                             
+                            </StackLayout>  
+                            <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Tipo2}"></Label>
+                             <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Tipo"></Label>
+                            <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Direccion2}"></Label>
+                           <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Dirección"></Label>
+                            <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Distrito2}"></Label>
+                           <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Distrito"></Label>
+                             <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Referencia2}"></Label>
+                             <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Referencia"></Label>
+                           
+                             <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Telefono2}"></Label>
+                             <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Teléfono"></Label>
+                           <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Correo2}"></Label>
+                             <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Correo"></Label>
+                           <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Ruc2}"></Label>
+                             <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="RUC"></Label>
+                           <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Representante2}"></Label>
+                             <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Representante"></Label>
+                            <Label
+                                FontSize="20" TextColor="Black"
+                                FontAttributes="Bold"
+                                HorizontalTextAlignment="Center" 
+                                Text="{Binding Proveedor.Registro2}"></Label>
+                           <Label
+                                FontSize="14" TextColor="Black" Margin="0,-10,0,0"
+                                HorizontalTextAlignment="Center" 
+                                Text="Nro Registro"></Label>
+                        </StackLayout>
+                     
+                              <!--<Label
+                            FontSize="20" TextColor="#34495e"
+                            FontAttributes="Bold" Margin="10,10,10,4"
+                            VerticalTextAlignment="Center" 
+                            HorizontalOptions="Center"
+                            Text="Nuestra Carta"></Label>-->
+                        <flv:FlowListView
+                                FlowItemsSource="{Binding Carta}"
+                                FlowLastTappedItem="{Binding PlatoSelecc}"
+                                 x:Name="flowList"
+                                FlowColumnCount="2" 
+                                FlowUseAbsoluteLayoutInternally="false" FlowColumnExpand="None"
+                                SeparatorVisibility="None" 
+                                HasUnevenRows="True"
+                                >
+                                <!--<flv:FlowListView.GroupHeaderTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout >
+                                                <Label Text="{Binding Path=Categoria}"></Label>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </flv:FlowListView.GroupHeaderTemplate>-->
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                          <StackLayout Margin="4">
+                                            <Grid BackgroundColor="#e74c3c">
+                                              <ffimageloading:CachedImage 	
+                                                      Source="{Binding ImageUri}" 
+                                                      Aspect="AspectFill"
+                                                     
+					                                            HorizontalOptions="FillAndExpand"
+					                                            VerticalOptions="Center"
+                                                      DownsampleToViewSize="True"
+                                                      FadeAnimationEnabled="True"
+                                                      LoadingDelay = "50">
+                                                <ffimageloading:CachedImage.HeightRequest>
+                                                    <OnPlatform x:TypeArguments="x:Double">
+                                                        <On Platform="Android" Value="150" />
+                                                        <On Platform="iOS" Value="150" />
+                                                    </OnPlatform>
+                                                </ffimageloading:CachedImage.HeightRequest>
+                                            </ffimageloading:CachedImage>
+                                              <!--<Image  Source="{Binding ImageUri}" 
+                                                      HeightRequest="150"
+                                                      VerticalOptions="Center" 
+                                                      Aspect="AspectFill">
+                                              </Image>-->
+                                              <Grid BackgroundColor="Black" HeightRequest = "45" VerticalOptions="End" Opacity="0.5">
+
+                                              </Grid>
+                                              <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                                                <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                                                   ImageHeightRequest = "30"
+                                                                                                   ImageWidthRequest = "30"
+                                                                                                   WidthRequest = "45"
+                                                                                                   Source="ic_favorite_red_light_36dp.png"/>
+                                                <Label VerticalOptions="Center" TextColor="White" Text="{Binding Valoracion}" FontSize="14" Margin="1,0,1,0"/>
+
+                                                <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                                                   ImageHeightRequest = "30"
+                                                                                                   ImageWidthRequest = "30"
+                                                                                                 WidthRequest = "45"
+                                                                                                 Source="ic_chat_orange_700_36dp.png"/>
+                                                <Label VerticalOptions="Center" TextColor="White" Text="{Binding Comentarios}" FontSize="14"  Margin="1,0,1,0"/>
+                                              </StackLayout>
+                                              <Label Text="{Binding Sunombre}" Margin="5,0" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"
+                                                                   VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                            </Grid>
+                                            <Label Text="{Binding Nombre}" FontSize="Small"
+                                                          LineBreakMode="WordWrap"/>
+                                            <Button Text="{Binding PrecioPedio}"
+                                                      BackgroundColor="#fc8a25"
+                                                      TextColor="White" FontSize="11"
+                                                      HeightRequest="35"
+                                                      CommandParameter="{Binding _id}"
+                                                  Clicked="AgregarPedido_Click"></Button>
+                                          </StackLayout>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
+                            </flv:FlowListView>
+                    <!--<telerikDataControls:RadListView  Grid.Row="2"   
+                                            x:Name="PlatoList" VerticalOptions="FillAndExpand"
+                                            ItemsSource="{Binding Carta}"
+                                            SelectedItem="{Binding PlatoSelecc}"
+                                             BackgroundColor="White" >
+                    <telerikDataControls:RadListView.ItemTemplate>
+                      <DataTemplate>
+                        <telerikListView:ListViewTemplateCell>
+                          <telerikListView:ListViewTemplateCell.View>
+                            <StackLayout>
+                              <Grid BackgroundColor="#34495e">
+                                <Image  Source="{Binding ImageUri}" HeightRequest="150" VerticalOptions="Center" Aspect="AspectFill"></Image>
+                                <Grid BackgroundColor="Black" HeightRequest = "45" VerticalOptions="End" Opacity="0.5">
+
+                                </Grid>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                                  <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                                     ImageHeightRequest = "30"
+                                                                                     ImageWidthRequest = "30"
+                                                                                     WidthRequest = "45"
+                                                                                     Source="ic_favorite_red_light_36dp.png"/>
+                                  <Label VerticalOptions="Center" TextColor="White" Text="{Binding Valoracion}" FontSize="14" Margin="1,0,1,0"/>
+
+                                  <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                                     ImageHeightRequest = "30"
+                                                                                     ImageWidthRequest = "30"
+                                                                                   WidthRequest = "45"
+                                                                                   Source="ic_chat_orange_700_36dp.png"/>
+                                  <Label VerticalOptions="Center" TextColor="White" Text="{Binding Comentarios}" FontSize="14"  Margin="1,0,1,0"/>
+                                </StackLayout>
+                                <Label Text="{Binding Sunombre}" Margin="5,0" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"
+                                                     VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                              </Grid>
+                              <Label Text="{Binding Nombre}" FontSize="Small"
+                                            LineBreakMode="WordWrap"/>
+                              <Button Text="{Binding PrecioPedio}"
+                                        BackgroundColor="#fc8a25"
+                                        TextColor="White" FontSize="11"
+                                        HeightRequest="35"
+                                        CommandParameter="{Binding _id}"
+                                    Clicked="AgregarPedido_Click"></Button>
+                            </StackLayout>
+                          </telerikListView:ListViewTemplateCell.View>
+                        </telerikListView:ListViewTemplateCell>
+                      </DataTemplate>
+                    </telerikDataControls:RadListView.ItemTemplate>
+                    <telerikDataControls:RadListView.GroupDescriptors>
+                      <telerikListView:PropertyGroupDescriptor PropertyName="Sucate"/>
+                    </telerikDataControls:RadListView.GroupDescriptors>
+                    <telerikDataControls:RadListView.GroupHeaderTemplate>
+                      <DataTemplate>
+                        <Grid BackgroundColor="#e74c3c">
+                          <Label Text="{Binding }"  FontSize="Medium" TextColor="White" Margin="5" FontAttributes="Bold" HorizontalOptions="Center"/>
+                        </Grid>
+                      </DataTemplate>
+                    </telerikDataControls:RadListView.GroupHeaderTemplate>
+                    <telerikDataControls:RadListView.LayoutDefinition>
+                      <telerikListView:ListViewGridLayout HorizontalItemSpacing="5"
+                                                          SpanCount="2"
+                                                          VerticalItemSpacing="5" />
+                    </telerikDataControls:RadListView.LayoutDefinition>
+                  </telerikDataControls:RadListView>-->
+        
+            </StackLayout>
+            </Grid>
+      </ScrollView>
+    </Grid>
+  </ContentPage.Content>
+  <!--<ScrollView  Orientation = "Vertical" VerticalOptions="FillAndExpand">
+    <StackLayout>
+      <Grid Margin="4,0,4,0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="180"/>
+        </Grid.ColumnDefinitions>
+      
+        <StackLayout>
+         
+            <Label
+                FontSize="12"
+                VerticalTextAlignment="Center" 
+                Text="{Binding Proveedor.Descripcion}"></Label>
+              <Label
+                FontSize="12"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center" 
+                Text="Dirección"></Label>
+              <Label
+                FontSize="12"
+                Margin="0,-4,0,0"
+                VerticalTextAlignment="Center" 
+                Text="{Binding Proveedor.Direccion}"></Label>
+                <Label
+                FontSize="12"
+                Margin="0,-4,0,0"
+                VerticalTextAlignment="Center" 
+                Text="{Binding Proveedor.Referencia}"></Label>
+              <Label
+                FontSize="12"
+                FontAttributes="Bold"
+                VerticalTextAlignment="Center" 
+                Text="Datos Adicionales"></Label>
+            <StackLayout Orientation="Horizontal" Margin="0,-4,0,0">
+                <Label
+                FontSize="12"
+                  
+                VerticalTextAlignment="Center" 
+                Text="RUC:"></Label>
+              <Label
+                FontSize="12"
+                   
+                VerticalTextAlignment="Center" 
+                Text="{Binding Proveedor.Ruc}"></Label>
+              </StackLayout>
+             
+              <Label
+                FontSize="12"
+                  
+                VerticalTextAlignment="Center" 
+                Text="Representante:"></Label>
+              <StackLayout Orientation="Horizontal" Margin="0,-4,0,0">
+               
+              <Label
+                FontSize="12"
+                  
+                VerticalTextAlignment="Center" 
+                Text="{Binding Proveedor.Representante}"></Label>
+              </StackLayout>
+              
+          
+          </StackLayout>
+       
+        <Grid Grid.Column="1">
+          <StackLayout>
+            <Grid>
+              <ActivityIndicator x:Name="imageLoad" HorizontalOptions="Center" VerticalOptions="Center"/>
+              <controls:CircleImage x:Name="imagenCir" VerticalOptions="Center" HorizontalOptions="Center"
+                        BorderColor = "White"
+            BorderThickness="3"
+            Aspect="AspectFill" >
+              <controls:CircleImage.WidthRequest>
+                <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150"/>
+              </controls:CircleImage.WidthRequest>
+              <controls:CircleImage.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150" />
+              </controls:CircleImage.HeightRequest>
+              <controls:CircleImage.Source>
+                <UriImageSource Uri="{Binding Proveedor.ImageUri}" CachingEnabled="False"/>
+              </controls:CircleImage.Source>
+            </controls:CircleImage>
+            </Grid>
+            <StackLayout>
+               <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label  x:Name="numSeg" FontAttributes="Italic"
+                          FontSize="Small"
+                          VerticalTextAlignment="Center"></Label>
+                <Label   FontAttributes="Italic" Text="Seguidores"
+                          FontSize="Small" 
+                          VerticalTextAlignment="Center"></Label>
+              </StackLayout>
+              <Label HorizontalOptions="Center"
+                  FontSize="12"  Margin="0,-4,0,0"
+                  VerticalTextAlignment="Center" 
+                  Text="{Binding Proveedor.Tipo}"></Label>
+              <StackLayout Orientation="Horizontal">
+                <Image Source="ic_phone_red_light_24dp.png"></Image>
+                <Label
+                  FontSize="11"
+                    
+                  VerticalTextAlignment="Center" 
+                  Text="{Binding Proveedor.Telefono2}"></Label>
+              </StackLayout>
+              <StackLayout Orientation="Horizontal">
+                <Image Source="ic_email_red_light_24dp.png"></Image>
+                <Label
+                  FontSize="11"
+                    
+                  VerticalTextAlignment="Center" 
+                  Text="{Binding Proveedor.Correo2}"></Label>
+              </StackLayout>
+            
+              </StackLayout>
+          </StackLayout>
+            
+        </Grid>
+      </Grid>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Ver Mapa" x:Name="verMapaBt"
+                                BackgroundColor="#EF4F50" VerticalOptions="End"
+                                TextColor="White" FontSize="11"
+                                HeightRequest="35" 
+                                Clicked="VerMapa_Click"></Button>
+            <Button Text="Seguir" x:Name="seguirBt"
+                                BackgroundColor="#3498db"
+                                TextColor="White" FontSize="11" VerticalOptions="End"
+                                HeightRequest="35"
+                                Clicked="Seguir_Click"></Button>
+        </StackLayout>
+      <Grid>
+        <Label 
+              FontSize="30"
+              TextColor="#EF4F50" FontFamily="Comic" FontAttributes="Bold"
+              VerticalTextAlignment="Center" VerticalOptions="Center"
+              Text="Productos" Margin="4"
+              HorizontalOptions="Center">
+          
+        </Label>
+      </Grid>
+      <Grid x:Name="gridList">
+        <telerikDataControls:RadListView MinimumHeightRequest ="280"
+                                          x:Name="PlatoList" VerticalOptions="FillAndExpand"
+                                          ItemsSource="{Binding Carta}"
+                                          SelectedItem="{Binding PlatoSelecc}"
+                                           BackgroundColor="White" >
+          <telerikDataControls:RadListView.ItemTemplate>
+            <DataTemplate>
+              <telerikListView:ListViewTemplateCell>
+                <telerikListView:ListViewTemplateCell.View>
+                  <StackLayout>
+                    <Grid BackgroundColor="#34495e">
+                      <Image  Source="{Binding ImageUri}" HeightRequest="150" VerticalOptions="Center" Aspect="AspectFill"></Image>
+                      <Grid BackgroundColor="Black" HeightRequest = "45" VerticalOptions="End" Opacity="0.5">
+                        
+                      </Grid>
+                      <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
+                     
+                        <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                           ImageHeightRequest = "30"
+                                                                           ImageWidthRequest = "30"
+                                                                           WidthRequest = "45"
+                                                                           Source="ic_favorite_red_light_36dp.png"/>
+                        <Label VerticalOptions="Center" TextColor="White" Text="{Binding Valoracion}" FontSize="14" Margin="1,0,1,0"/>
+                        
+                        <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                           ImageHeightRequest = "30"
+                                                                           ImageWidthRequest = "30"
+                                                                         WidthRequest = "45"
+                                                                         Source="ic_chat_orange_700_36dp.png"/>
+                        <Label VerticalOptions="Center" TextColor="White" Text="{Binding Comentarios}" FontSize="14"  Margin="1,0,1,0"/>
+                      </StackLayout>
+                      <Label Text="{Binding Sunombre}" Margin="5,0" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"
+                                           VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                    </Grid>
+                    <Label Text="{Binding Nombre}" FontSize="Small" 
+                                  LineBreakMode="WordWrap"/>
+                      <Button Text="{Binding PrecioPedio}"
+                                BackgroundColor="#fc8a25"
+                                TextColor="White" FontSize="11"
+                                HeightRequest="35"
+                                CommandParameter="{Binding _id}"
+                            Clicked="AgregarPedido_Click"></Button>
+                  </StackLayout>
+                </telerikListView:ListViewTemplateCell.View>
+             </telerikListView:ListViewTemplateCell>
+          </DataTemplate>
+        </telerikDataControls:RadListView.ItemTemplate>
+          <telerikDataControls:RadListView.GroupDescriptors>
+            <telerikListView:PropertyGroupDescriptor PropertyName="Sucate"/>
+          </telerikDataControls:RadListView.GroupDescriptors>
+          <telerikDataControls:RadListView.GroupHeaderTemplate>
+            <DataTemplate>
+              <Grid BackgroundColor="#e74c3c">
+                <Label Text="{Binding }"  FontSize="Medium" TextColor="White" Margin="5" FontAttributes="Bold" HorizontalOptions="Center"/>
+              </Grid>
+            </DataTemplate>
+          </telerikDataControls:RadListView.GroupHeaderTemplate>
+          <telerikDataControls:RadListView.LayoutDefinition>
+            <telerikListView:ListViewGridLayout HorizontalItemSpacing="5"
+                                                SpanCount="2"
+                                                VerticalItemSpacing="5" />
+            </telerikDataControls:RadListView.LayoutDefinition>
+        </telerikDataControls:RadListView>
+          <ActivityIndicator  HorizontalOptions="Center"
+								     IsRunning="{Binding IsBusy}"
+								     IsVisible="{Binding IsBusy}"/>
+       </Grid>
+    </StackLayout>
+ </ScrollView>-->
+</ContentPage>

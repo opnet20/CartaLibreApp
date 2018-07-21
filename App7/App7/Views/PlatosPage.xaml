@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+	xmlns:local="clr-namespace:App7;assembly=App7"
+  xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+  xmlns:telerik="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+  xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+  
+  xmlns:controls3="clr-namespace:SegmentedControl.FormsPlugin.Abstractions;assembly=SegmentedControl.FormsPlugin.Abstractions"
+  xmlns:controls2="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+  xmlns:Controls5="clr-namespace:HorizontalListView"
+  xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+  xmlns:controls7="clr-namespace:Xamarin.Netflix.Controls;assembly=App7"
+  xmlns:customControls="clr-namespace:HorizontalListView.CustomControls"
+  xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+   xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+  x:Class="App7.PlatosPage" 
+  Title="Mi Carta" 
+	IsBusy="{Binding IsBusy}">
+  <ContentPage.ToolbarItems>
+    <!--<ToolbarItem Activated="MapButtonClick2"  Order="Primary"  Priority="0" Icon="Logoletra.png"/>-->
+    <ToolbarItem Activated="ProveedoresClick"  Order="Primary" x:Name="iconProv" Priority="0" Icon="ic_store_white_24dp.png"/>
+    <ToolbarItem Activated="MapButtonClick"  Order="Primary" x:Name="iconGps" Priority="0" Icon="ic_room_white_24dp.png"/>
+    <ToolbarItem Activated="SearchButtonClick"  Order="Primary" Priority="0" Icon="ic_search_white_24dp.png"/>
+    <!--<ToolbarItem Activated="OnToolbarButtonClick"  Order="Primary" Priority="0" Icon="hamburgerButtonIcon"/>-->
+  </ContentPage.ToolbarItems>  
+  <Grid>
+      <telerikPrimitives:RadSideDrawer x:Name="drawer" DrawerLength="300">
+        <telerikPrimitives:RadSideDrawer.MainContent>
+          <Grid VerticalOptions="FillAndExpand">
+                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                  <Button Text="Mis Solicitudes" TextColor="White" BackgroundColor="#27ae60" Clicked="SolicitudesClick"></Button>
+                  <Button Text="Ofertas" TextColor="White" BackgroundColor="#2980b9" Clicked="OfertasClick"></Button>
+                </StackLayout>-->
+              
+                 
+                     <!--<ListView ItemsSource="{Binding Platos}"
+                          BackgroundColor="Silver"
+                          x:Name="PlatoList" 
+                          androidSpecific:ListView.IsFastScrollEnabled="True"
+                          HasUnevenRows="True">-->
+                  <telerik:RadListView ItemsSource="{Binding Platos}"
+                          BackgroundColor="Silver"
+                          x:Name="PlatoList" IsPullToRefreshEnabled="True"
+                          androidSpecific:ListView.IsFastScrollEnabled="True"
+                         >
+
+                    <telerik:RadListView.ItemTemplate>
+                      <DataTemplate>
+                        <telerikListView:ListViewTemplateCell>
+                          <telerikListView:ListViewTemplateCell.View>                               
+                                    <Grid>
+                                      <Grid BackgroundColor="White" Margin="0,5,0,5">
+                                        <Grid.RowDefinitions>
+                                          <RowDefinition Height="Auto" />
+                                          <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <!-- HEADER -->
+                                        <Grid Margin="0,0,0,0" VerticalOptions="Start" >
+                                          <Grid Margin="5,3,3,0" Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                              <ColumnDefinition Width="Auto"/>
+                                              <ColumnDefinition Width="*"/>
+                                              
+                                            </Grid.ColumnDefinitions>
+                                            <controls:CircleImage VerticalOptions="Center"
+                                                                    BorderColor = "White"
+                                                                    BorderThickness="0"
+                                                                    Aspect="AspectFill">
+                                              <controls:CircleImage.WidthRequest>
+                                                <OnPlatform x:TypeArguments="x:Double" iOS="50" Android="50" WinPhone="75"/>
+                                              </controls:CircleImage.WidthRequest>
+                                              <controls:CircleImage.HeightRequest>
+                                                <OnPlatform x:TypeArguments="x:Double" iOS="30" Android="55" WinPhone="75"/>
+                                              </controls:CircleImage.HeightRequest>
+                                              <controls:CircleImage.Source>
+                                                <UriImageSource Uri="{Binding ImageUri}" CacheValidity="14" CachingEnabled="true"/>
+                                              </controls:CircleImage.Source>
+                                            </controls:CircleImage>
+                              
+                                            <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                    WidthRequest="50"
+                                                                  HeightRequest="50" 
+                                                                    CommandParameter="{Binding CProveedor}"
+                                                                      Clicked="Proveedor_Click"/>
+                                            <Grid Grid.Column="1" VerticalOptions="Center">
+                                              <StackLayout>
+                                                <StackLayout Orientation="Horizontal" Padding="0">
+                                                  <Label x:Name="usuarioLB" Text="{Binding Usuario}" Margin="0,0,0,0"
+                                                          FontSize="Medium" FontAttributes="Bold"  >
+                                                  </Label>
+                                                  <ffimageloading:CachedImage Source="{Binding CProveedor.ImageCategoria}" 
+                                                                              CacheDuration="14" 
+                                                                              HeightRequest="20">
+                                                  </ffimageloading:CachedImage>   
+                                                </StackLayout>
+                                                <Label Text="{Binding SubUsuario}" FontSize="12" Margin="0,-7,0,-3"
+                                                        LineBreakMode="WordWrap"/>
+                                              </StackLayout>
+                                              <StackLayout HorizontalOptions="End">
+                                                  <ffimageloading:CachedImage 
+                                                                  Source="{Binding CProveedor.Abierto}" 
+                                                                  Aspect="AspectFit" 
+                                                                  CacheDuration="14" 
+                                                                  HeightRequest="20"
+                                                                  Margin="0" >                                                       
+                                                  </ffimageloading:CachedImage>
+                                                  <Label Text="{Binding CProveedor.AbiertoDetalle}" FontSize="12"
+                                                        LineBreakMode="WordWrap" />
+                                              </StackLayout>
+                                              
+                                            </Grid>
+                                          </Grid>
+                                        </Grid>
+                                        <!-- PRODUCTOS -->
+                                        <!-- EVENT OFERTA -->
+                                        <Grid  Grid.Row="1" BackgroundColor="#34495e" IsVisible="{Binding NoVer}" HeightRequest="190">
+                                          <ffimageloading:CachedImage 
+                                                                  Source="{Binding CPlato.ImageUri}" 
+                                                                  Aspect="AspectFill" 
+                                                                    CacheDuration="14" 
+                                                                       
+                                                                  Margin="0" >                                                       
+                                          </ffimageloading:CachedImage>
+                                          <StackLayout>
+                                              <ffimageloading:CachedImage Source="{Binding Icon}"
+                                                                          CacheDuration="14" 
+                                                                          HeightRequest="80" Margin="5"> 
+                                            </ffimageloading:CachedImage>
+                                              <Label Text="{Binding Aviso}" Margin="5,0,5,5" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"
+                                                                  VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+                                              <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                                                <ffimageloading:CachedImage Source="ic_event_available_cyan_A700_18dp.png"
+                                                                            CacheDuration="14" 
+                                                                            Margin="0,-3,0,-3">
+                                                </ffimageloading:CachedImage>
+                                                <Label Text="{Binding CPlato.FechaCreacion, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}" 
+                                                        FontSize="10" Margin="2,-3,0,-3" FontAttributes="Bold" TextColor="White" VerticalOptions="Center"
+                                                    LineBreakMode="WordWrap"/> 
+                                              </StackLayout>
+                                      
+                                              <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Margin="8">
+                                                <ffimageloading:CachedImage Aspect="AspectFill" 
+                                                                              CacheDuration="14" 
+                                                                            HeightRequest = "25"
+                                                        Margin="0" Source="ic_favorite_red_light_36dp.png">
+                                                </ffimageloading:CachedImage>
+                                                       
+                                                <Label VerticalOptions="Center" HorizontalOptions="End" TextColor="White"
+                                                        Text="{Binding CPlato.Valoracion}" LineBreakMode="NoWrap"
+                                                        FontAttributes="Bold" FontSize="15" Margin="1,0,1,0"/>
+                                       
+                                                <ffimageloading:CachedImage Aspect="AspectFill" 
+                                                                              CacheDuration="14" 
+                                                                            HeightRequest = "25"
+                                                        Margin="0" Source="ic_chat_orange_700_36dp.png">
+                                                  </ffimageloading:CachedImage>
+                                                <Label VerticalOptions="Center" HorizontalOptions="End" TextColor="White" 
+                                                          Text="{Binding CPlato.Comentarios}" LineBreakMode="NoWrap"
+                                                          FontAttributes="Bold" FontSize="15" Margin="1,0,1,0"/>
+                                              </StackLayout>
+                                            </StackLayout>
+                                          <controls2:ImageButton  BackgroundColor="Transparent" 
+                                                                  CommandParameter="{Binding CPlato}" 
+                                                                  Clicked="Producto_Click">
+                                          </controls2:ImageButton>
+                                        </Grid>
+                                        <!-- PLATOS -->
+                                        <Grid Grid.Row="1">
+                                          <controls7:HorizontalList ListOrientation="Horizontal" 
+                                                                    ItemsSource="{Binding Lines}"
+                                                                    SelectedItem="{Binding Line, Mode=TwoWay}"
+                                                                      SelectedItemChanged="hlc_Click"
+                                                                    SelectedCommand="{Binding OpenPlatoCommand}"
+                                                                    HeightRequest="160" IsVisible="{Binding Ver}">
+                                            <controls7:HorizontalList.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ViewCell>
+                                                        <StackLayout Margin="10,0,5,10" WidthRequest="100" HeightRequest="160">
+                                                            <!--<Image HorizontalOptions="Start" Source="{Binding CPlato.ImageUri}" WidthRequest="150" HeightRequest="150" />-->
+                                                            <Grid HeightRequest="100" Margin="0" BackgroundColor="#e74c3c"> 
+                                                              <ffimageloading:CachedImage 
+                                                                  Source="{Binding CPlato.ImageUri}" 
+                                                                  Aspect="AspectFill" 
+                                                                  CacheDuration="14"
+                                                                  Margin="0" >                                                      
+                                                              </ffimageloading:CachedImage>
+                                                              <Label Text="{Binding Sunombre, Mode=TwoWay}" TextColor="White" Margin="5,5,5,5"
+                                                                      FontSize="20" HorizontalTextAlignment="Center"
+                                                                      VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                                                              <controls2:ImageButton  BackgroundColor="Transparent" 
+                                                                                CommandParameter="{Binding CPlato}" 
+                                                                                  Clicked="Producto_Click">
+                                                              </controls2:ImageButton>
+                                                            </Grid>  
+                                                            <Label  HorizontalTextAlignment="Center" TextColor="#bc5c29"
+                                                                    FontSize="13" LineBreakMode="TailTruncation"  Text="{Binding CPlato.Nombre}"/>
+                                                            <!--<Label Margin="5,-5,0,0" Grid.Row="2" Text="{Binding CPlato.Descripcion}"
+                                                                    FontSize="Small" FontAttributes="Italic" LineBreakMode="WordWrap"></Label>-->
+                                                            <Label Text="{Binding CPlato.FechaCreacion, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}" FontSize="8" Margin="5,-3,0,0" 
+                                                                    TextColor="Silver" LineBreakMode="WordWrap"/>  
+                                                            <!--<Label HorizontalTextAlignment="Center" Margin="0,-5,0,0" 
+                                                                    LineBreakMode="TailTruncation" FontSize="12" Text="{Binding Artist}" TextColor="#adaeb2"/>-->
+                                                            <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="End" Grid.Column="1">
+                                                              <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                                                  <ffimageloading:CachedImage Aspect="AspectFill" HeightRequest = "25"
+                                                                                              CacheDuration="14"
+                                                                        Margin="0" Source="ic_favorite_red_light_36dp.png">
+                                                                </ffimageloading:CachedImage>
+                                                       
+                                                                <Label VerticalOptions="Center" HorizontalOptions="End"
+                                                                        Text="{Binding CPlato.Valoracion}" LineBreakMode="NoWrap"
+                                                                        FontAttributes="Bold" FontSize="15" Margin="1,0,1,0"/>
+                                       
+                                                                  <ffimageloading:CachedImage Aspect="AspectFill" HeightRequest = "25"
+                                                                                              CacheDuration="14"
+                                                                        Margin="0" Source="ic_chat_orange_700_36dp.png">
+                                                                  </ffimageloading:CachedImage>
+                                                                  <Label VerticalOptions="Center" HorizontalOptions="End" 
+                                                                          Text="{Binding CPlato.Comentarios}" LineBreakMode="NoWrap"
+                                                                          FontAttributes="Bold" FontSize="15" Margin="1,0,1,0"/>
+                                                              </StackLayout>
+                                                          </StackLayout>
+                                                        </StackLayout>
+                                                    </ViewCell>
+                                                </DataTemplate>
+                                            </controls7:HorizontalList.ItemTemplate>
+                                          </controls7:HorizontalList>
+                                      </Grid>
+                                      </Grid>
+                                    </Grid>
+
+                          </telerikListView:ListViewTemplateCell.View>
+                        </telerikListView:ListViewTemplateCell>
+                        </DataTemplate>
+                      </telerik:RadListView.ItemTemplate>
+                    </telerik:RadListView>
+                   
+                
+                <Grid HorizontalOptions="Center" VerticalOptions="End" Margin="20" >
+                    <!--<controls2:ImageButton  BackgroundColor="Transparent" 
+                        Source="Food2.png"  HorizontalOptions="Center" Orientation="ImageOnBottom"
+                        Clicked="AgregarSolicitud_Click"/>-->
+                  </Grid>
+                  <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10" Padding="10" IsVisible="{Binding IsBusy}">
+                    <ActivityIndicator  HorizontalOptions="Center"
+                               IsRunning="{Binding IsBusy}"
+                               IsVisible="{Binding IsBusy}"/>
+                    <Label HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Text="Cargando..."/>
+                  </StackLayout>
+           </Grid>
+         </telerikPrimitives:RadSideDrawer.MainContent>
+        <telerikPrimitives:RadSideDrawer.DrawerContent>
+          <Grid BackgroundColor="White" WidthRequest="220">
+            <ListView x:Name="drawerList" SelectedItem="{Binding Enlace}" ItemsSource="{Binding Enlaces}">
+              <ListView.ItemTemplate>
+                <DataTemplate>
+                  <ViewCell>
+                    <Grid>
+                      <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Margin="10,0,0,0">
+                        <Image Source="{Binding Src}"></Image>
+                        <Label Text="{Binding Name}" FontSize="Small" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" TextColor="#777777" Margin="5,0,0,0"
+                                VerticalOptions="Center"/>
+                      </StackLayout>
+                    </Grid>
+                  </ViewCell>
+                </DataTemplate>
+              </ListView.ItemTemplate>
+            </ListView>
+          </Grid>
+        </telerikPrimitives:RadSideDrawer.DrawerContent>
+      </telerikPrimitives:RadSideDrawer>
+  </Grid>
+</ContentPage>

@@ -1,0 +1,3 @@
+D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\App7.Windows.csproj;neutral
+D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\App7.csproj;neutral
+D:\mylabs\Deliverys\source\svn\trunk\source\Delivery.Model\Delivery.Model.csproj;neutral

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                   xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Views.SolicitudPopUp">
+  <popup:PopupPage.Animation>
+    <animations:ScaleAnimation
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True"/>
+  </popup:PopupPage.Animation>
+  <ScrollView  Orientation = "Vertical" VerticalOptions="Center">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+      <Grid>
+        <Frame Margin="10" Padding="5">
+          <StackLayout>
+             <Grid BackgroundColor="#EF4F50">
+                <Label Text="PEDIDO ESPECIAL" Margin="4" TextColor="White" VerticalTextAlignment="Center" 
+                       HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                       VerticalOptions="Center" LineBreakMode="WordWrap"/>
+              </Grid>
+            <!--<Image  Source="Solicita.png" Margin="0" HeightRequest="80"></Image>-->
+            <!--<Label Text="   ¡Solicita el plato que tu desees!   " HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                TextColor="#7f8c8d" Font="16,Bold" Margin="10,10,10,10" x:Name="msjLB"></Label>-->
+            <StackLayout Orientation="Horizontal">
+              <Image Source="ic_restaurant_grey_500_18dp.png"></Image>
+              <Entry x:Name="nombreTB" Text="" Placeholder="¿Que deseas pedir?" 
+                     HorizontalOptions="FillAndExpand" ></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+               <Image Source="ic_description_grey_500_18dp.png"></Image>
+              <Picker x:Name="CategoriaPi" Title="Categoria" HorizontalOptions="FillAndExpand">
+              </Picker>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Image Source="ic_description_grey_500_18dp.png"></Image>
+              <Entry x:Name="descTB" Placeholder="Detalle" 
+                      HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+              <Image Source="ic_description_grey_500_18dp.png"></Image>
+              <Entry x:Name="direcTB" Placeholder="Dirección de entrega" 
+                      HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Image Source="ic_description_grey_500_18dp.png"></Image>
+              <Label Text="Fecha y Hora de entrega" LineBreakMode="WordWrap" 
+                     VerticalTextAlignment="Center" FontSize="12"></Label>
+              <DatePicker x:Name="datepicker">
+                <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+              </DatePicker>
+              <TimePicker x:Name="timepicker"></TimePicker>
+            </StackLayout>
+        
+            <Grid Padding="0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Button
+                    x:Name="cancelarBT"
+                    Text="CANCELAR"
+                    BackgroundColor="#EF4F50"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Grid.Column="0" Clicked="cancelar_Click"></Button>
+              <Button
+                x:Name="solicitudButton"
+                Text="CONFIRMAR"
+                    BackgroundColor="#56ad9d"
+                    TextColor="White"
+                    HeightRequest="50"
+                    Grid.Column="1" Clicked="Guardar_Click"></Button>
+            </Grid>
+          </StackLayout>
+        
+        </Frame>
+        <ActivityIndicator x:Name="loading" Color="Red" />
+      </Grid>
+    </StackLayout>
+  </ScrollView>
+</popup:PopupPage >

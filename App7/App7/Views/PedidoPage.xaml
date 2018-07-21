@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+            Title="{Binding Title}"
+            xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+            BarTextColor="White"
+            xmlns:local="clr-namespace:App7;assembly=App7"
+             x:Class="App7.Views.PedidoPage" IsBusy="{Binding IsBusy}">
+  <TabbedPage.Children>
+    <ContentPage Title="Pedidos">
+      <Grid BackgroundColor="White">
+        <StackLayout HorizontalOptions="Center" 
+                     Orientation="Horizontal" Spacing="10" Padding="10" IsVisible="{Binding IsBusy}">
+          <ActivityIndicator  HorizontalOptions="Center"
+                     IsRunning="{Binding IsBusy}"
+                     IsVisible="{Binding IsBusy}"/>
+          <Label HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Text="Cargando..."/>
+        </StackLayout>
+        <ListView
+             IsPullToRefreshEnabled="True" 
+            RefreshCommand="{Binding GetPedidosCommand}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+				    ItemsSource="{Binding Pedidos}"
+             SelectedItem="{Binding Solicitud}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <ViewCell.View>
+                    <ContentView Padding="10"  BackgroundColor="White">
+                      <StackLayout>
+                        <Grid>
+                          <Grid.Padding>
+                            <OnPlatform x:TypeArguments="Thickness">
+                              <OnPlatform.iOS>
+                                10,5,10,5
+                              </OnPlatform.iOS>
+                              <OnPlatform.Android>
+                                10,5,10,5
+                              </OnPlatform.Android>
+                              <OnPlatform.WinPhone>
+                                20,25,20,25
+                              </OnPlatform.WinPhone>
+                            </OnPlatform>
+                          </Grid.Padding>
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                          </Grid.ColumnDefinitions>
+                          <!--<Image Source="{Binding Imagen}" HeightRequest="60"></Image>-->
+                          <Grid  HeightRequest="60">
+                            <Grid.ColumnDefinitions>
+                              <ColumnDefinition Width="30"/>
+                              <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                              <RowDefinition Height="30"/>
+                              <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+
+                            <ffimageloading:CachedImage Source="{Binding Icon}"
+                                                     CacheDuration="14"
+                                                     Grid.ColumnSpan="2"
+                                                     Grid.RowSpan="2">
+                            </ffimageloading:CachedImage>
+                            
+                            <controls:CircleImage VerticalOptions="Center"
+                                                  BorderColor = "White"
+                                                  HorizontalOptions="Center"
+                                                  BorderThickness="1"
+                                                  Grid.ColumnSpan="2"
+                                                  Grid.RowSpan="2"
+                                                  Aspect="AspectFill">
+                              <controls:CircleImage.WidthRequest>
+                                <OnPlatform x:TypeArguments="x:Double" iOS="50" Android="55" WinPhone="75"/>
+                              </controls:CircleImage.WidthRequest>
+                              <controls:CircleImage.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double" iOS="30" Android="55" WinPhone="75"/>
+                              </controls:CircleImage.HeightRequest>
+                              <controls:CircleImage.Source>
+                                <UriImageSource Uri="{Binding ImagePlato}" CacheValidity="14" CachingEnabled="true"/>
+                              </controls:CircleImage.Source>
+                            </controls:CircleImage>
+
+                         
+
+                            <controls:CircleImage VerticalOptions="Center"
+                                                  BorderColor = "White"
+                                                  HorizontalOptions="Center"
+                                                  BorderThickness="1"
+                                                  Grid.Column="1"
+                                                  Grid.Row="1"
+                                                  Aspect="AspectFill">
+                              <controls:CircleImage.Source>
+                                <UriImageSource Uri="{Binding ImageProveedor}" CacheValidity="14" CachingEnabled="true"/>
+                              </controls:CircleImage.Source>
+                            </controls:CircleImage>
+                            <ffimageloading:CachedImage Source="{Binding Imagen}"
+                                                        Aspect="AspectFit"
+                                   Grid.Column="0"
+                                   Grid.Row="0" 
+                                                        WidthRequest="15"
+                                   HeightRequest="15"></ffimageloading:CachedImage>
+                          </Grid>
+
+                          <StackLayout Grid.Column="2" VerticalOptions="Center">
+                            <Label Text="{Binding Plato}"  FontSize="18" LineBreakMode="WordWrap"/>
+                           
+                            <Label Text="{Binding Proveedor}" Margin="0,-3,0,0" FontSize="15" FontAttributes="Bold" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding FechaEntrega, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}" Margin="0,-3,0,0" FontSize="12" LineBreakMode="WordWrap"/>
+                             <StackLayout Orientation="Horizontal" Margin="0,-3,0,-6" HeightRequest="{Binding AltoMs}"> 
+                                <!--<ffimageloading:CachedImage Source="ic_message_red_light_24dp.png"
+                                                        Aspect="AspectFit"
+                                                         Grid.Column="0"
+                                                         Grid.Row="0" 
+                                                        HeightRequest="15"></ffimageloading:CachedImage>-->
+                                <Label Text="{Binding Msgs}"  FontSize="12" TextColor="Red" FontAttributes="Italic" LineBreakMode="WordWrap"/> 
+                                <Label Text="Mensajes nuevos"  FontSize="12" TextColor="Red" FontAttributes="Italic" LineBreakMode="WordWrap"/> 
+                            </StackLayout>
+                            <Button
+                              x:Name="masBT"
+                              Margin="0,-3,0,-6"
+                              Text="Detalle"
+                              FontAttributes="Bold"
+                              FontSize="9"
+                              HeightRequest="30"
+                              CommandParameter="{Binding _id}"
+                              BackgroundColor="#56ad9d"
+                              TextColor="White"
+                              Clicked="detalle_Click"></Button>
+                          
+                          </StackLayout>
+                          <StackLayout Grid.Column="3" HorizontalOptions="End">
+                            <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="End">
+                              <Label Text="S/."  Font="Bold,20"/>
+                              <Label Text="{Binding Total}"  Font="Bold,20"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="End">
+                              <Label Text="Cantidad: "  Font="Bold,12"/>
+                              <Label Text="{Binding Cantidad}"  Font="Bold,12"/>
+                            </StackLayout>
+                            <Label Text="{Binding Estado}"  FontSize="12" TextColor="#45B39D" LineBreakMode="WordWrap"/>
+
+                          </StackLayout>
+                        </Grid>
+                      </StackLayout>
+                    </ContentView>
+                </ViewCell.View>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <!--<StackLayout VerticalOptions="End">
+          <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="5,10,5,10">
+            <Label Text="Total S/." FontSize="Large"></Label>
+            <Label Text="{Binding TotalEspera}" FontSize="Large"></Label>
+          </StackLayout>
+
+        </StackLayout>-->
+      </Grid>
+    </ContentPage>
+    <ContentPage x:Name="esperasCP" Title="Ofertas de Solicitudes" >
+      <StackLayout BackgroundColor="White">
+      <ListView
+          x:Name="EsperaList"
+          ItemsSource="{Binding Espera}"
+          VerticalOptions="FillAndExpand"
+          HasUnevenRows="true">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid>
+              <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                  <OnPlatform.iOS>
+                    10,5,10,5
+                  </OnPlatform.iOS>
+                  <OnPlatform.Android>
+                    10,5,10,5
+                  </OnPlatform.Android>
+                  <OnPlatform.WinPhone>
+                    20,25,20,25
+                  </OnPlatform.WinPhone>
+                </OnPlatform>
+              </Grid.Padding>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="3.5*"/>
+              </Grid.ColumnDefinitions>
+              <Image Source="oferta3.png" HeightRequest="60"></Image>
+               
+              
+              <StackLayout Grid.Column="2">
+                <Label Text="{Binding Plato}"  FontSize="15" LineBreakMode="WordWrap"/>
+                <Label Text="{Binding Proveedor}"  FontSize="12" LineBreakMode="WordWrap"/>
+                <Label Text="{Binding Detalle}"  FontSize="12" LineBreakMode="WordWrap"/>
+                <StackLayout Orientation="Horizontal">
+                   <Button 
+                      x:Name="masBT"
+                      Text="Aceptar"
+                      FontAttributes="Bold"
+                      HeightRequest="40"
+                       CommandParameter="{Binding _id}"
+                      BackgroundColor="#56ad9d"
+                      TextColor="White"
+                      FontSize="11"
+                      Clicked="aceptar_Click"></Button>
+                   <Button 
+                      x:Name="menosBT"
+                      Text="Rechazar"
+                      FontAttributes="Bold"
+                      HeightRequest="40"
+                       CommandParameter="{Binding  _id}"
+                      BackgroundColor="Orange"
+                      TextColor="White"
+                      FontSize="11"
+                      Clicked="rechazar_Click"></Button>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout Grid.Column="3" HorizontalOptions="End">
+                <StackLayout Orientation="Horizontal">
+                  <Label Text="S/."  Font="Bold,20"/>
+                  <Label Text="{Binding Total}"  Font="Bold,20"/>  
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="End">
+                  <Label Text="Cantidad: "  Font="Bold,12"/>
+                  <Label Text="{Binding Cantidad}"  Font="Bold,12"/>
+                </StackLayout>
+                <Label Text="{Binding Estado}"  FontSize="12" TextColor="#45B39D" LineBreakMode="WordWrap"/>
+              </StackLayout>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+        <!--<StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="5,10,5,10">
+            <Label Text="Total S/." FontSize="Large"></Label>
+            <Label Text="{Binding TotalEspera}" FontSize="Large"></Label>
+          </StackLayout>
+         <Button Text="SOLICITAR"
+                BackgroundColor="#F7A305"
+                TextColor="White"
+                HeightRequest="50"
+                Command="{Binding EnviarPedidosEspera}"
+                Grid.Column="1"></Button>
+        </StackLayout>-->
+      </StackLayout>  
+    </ContentPage>
+    <!--<ContentPage Title="Procesando">
+      <StackLayout>
+          <ListView
+				    ItemsSource="{Binding Procesados}"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="true">
+            <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid> 
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                      <OnPlatform.iOS>
+                        10,5,10,5
+                      </OnPlatform.iOS>
+                      <OnPlatform.Android>
+                        10,5,10,5
+                      </OnPlatform.Android>
+                      <OnPlatform.WinPhone>
+                        20,25,20,25
+                      </OnPlatform.WinPhone>
+                    </OnPlatform>
+                  </Grid.Padding>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="3.5*"/>
+                  </Grid.ColumnDefinitions>
+                  <Switch IsToggled="{Binding Select}" Grid.Column="0" HorizontalOptions="EndAndExpand" Toggled="SelecChange"/>
+                  <Label Text="{Binding Cantidad}" Grid.Column="1" FontSize="Medium" LineBreakMode="NoWrap"/>
+                  <StackLayout Grid.Column="2">
+                    <Label Text="{Binding Plato}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                    <Label Text="{Binding Proveedor}"  FontSize="12" LineBreakMode="WordWrap"/>
+                  </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="End">
+                    <Label Text="S/."  Font="Bold,20"/>
+                    <Label Text="{Binding Subtotal}"  Font="Bold,20"/>
+                  </StackLayout> 
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="5,10,5,10">
+            <Label Text="Total S/." FontSize="Large"></Label>
+            <Label Text="{Binding TotalEspera}" FontSize="Large"></Label>
+          </StackLayout>
+          <Button x:Name="BtPedir" Text="SOLICITAR"
+                  BackgroundColor="#F7A305"
+                  TextColor="White"
+                  HeightRequest="50"
+                  Grid.Column="1"></Button>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage>-->
+  </TabbedPage.Children>
+</TabbedPage>

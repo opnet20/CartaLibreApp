@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             
+             Title="Mi Ciudad"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             x:Class="App7.Views.VistasNavegacion.MapaRegistro">
+  <!--<popup:PopupPage.Animation>
+    <animations:ScaleAnimation
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True"/>
+  </popup:PopupPage.Animation>-->
+  
+   <StackLayout x:Name="stackMap" >
+        <!--<Label Text="Selecciona tu Ubicación" FontSize="Small" TextColor="White"
+               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                FontAttributes="Bold" Margin="10,0,0,0"></Label>-->
+        <Grid  VerticalOptions = "FillAndExpand" HorizontalOptions = "FillAndExpand">
+           <maps:Map x:Name="map"
+                       IsShowingUser="true"
+                      VerticalOptions="FillAndExpand" IsIndoorEnabled="true" />
+          <!--<maps:Map x:Name="MyMap" IsShowingUser="true"/>-->
+           <Label x:Name="coordenadasLB"
+                  Text="-- --" FontSize="Small" 
+                  VerticalOptions="Start"
+                 VerticalTextAlignment="Center" 
+                  HorizontalTextAlignment="Center" HorizontalOptions="Center"
+                 FontAttributes="Bold" Margin="10,0,0,0"></Label>
+          <Button BackgroundColor="#EF4F50" TextColor="White" x:Name="GuardarBt"
+                  VerticalOptions="End" Margin="55,10,55,10"   Clicked="Guardar_Click"
+                  Text="Agregar Ubicación" FontSize="10"/>
+          <!--<Button BackgroundColor="#2980b9" TextColor="White" x:Name="VerBt"
+                  VerticalOptions="End" Margin="55,10,55,10"   Clicked="Ver_Click"
+                  Text="Ver Cercanías" FontSize="10"/>-->
+       </Grid>
+   </StackLayout>  
+
+</ContentPage>

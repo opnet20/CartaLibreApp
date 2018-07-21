@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Delivery.Model" />
+      <xsd:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/WcfService.Modelo" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_SetFoto_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetFoto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetFoto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetFotoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFoodLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoodLine" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFoodLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoodLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProveedores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProveedores" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProveedores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProveedoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProveedorPorUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProveedorPorUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProveedorPorUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProveedorPorUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPlatos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPlatos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPlato_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPlato" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPlato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPlatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPlatosProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatosProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPlatosProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatosProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPlatosActivosProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatosActivosProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPlatosActivosProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlatosActivosProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePlato_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlato" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePlato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPedidoProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPedidoProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPedidoProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPedidoProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPedidoUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPedidoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPedidoUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPedidoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetPedido" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePedido" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdatePedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetVistoPedidoUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetVistoPedidoUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetVistoPedidoUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetVistoPedidoUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetVistoPedidoProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetVistoPedidoProveedor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetVistoPedidoProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetVistoPedidoProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetComentariosNuevos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComentariosNuevos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetComentariosNuevos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComentariosNuevosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsuario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsuario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUsuario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUsuarioProv_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetUsuarioProv" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetUsuarioProv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetUsuarioProvResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetLike_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetLike" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetLike_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetLikeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFavoritos_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFavoritos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFavoritos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFavoritosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFoodLineGeo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoodLineGeo" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetFoodLineGeo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFoodLineGeoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_InputMessage">
+    <wsdl:part name="parameters" element="tns:Search" />
+  </wsdl:message>
+  <wsdl:message name="IService1_Search_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetComentario_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetComentario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetComentario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetComentarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetComentario_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetComentario" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetComentario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetComentarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetSeguidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetSeguidor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SetSeguidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetSeguidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteSeguidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeguidor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteSeguidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSeguidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SoySeguidor_InputMessage">
+    <wsdl:part name="parameters" element="tns:SoySeguidor" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SoySeguidor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SoySeguidorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_NumSeguidores_InputMessage">
+    <wsdl:part name="parameters" element="tns:NumSeguidores" />
+  </wsdl:message>
+  <wsdl:message name="IService1_NumSeguidores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NumSeguidoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSeguidores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeguidores" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetSeguidores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeguidoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPreferencias_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferencias" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetPreferencias_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPreferenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EnviarNotificacionPlato_InputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarNotificacionPlato" />
+  </wsdl:message>
+  <wsdl:message name="IService1_EnviarNotificacionPlato_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EnviarNotificacionPlatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOneFoodLine_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneFoodLine" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetOneFoodLine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneFoodLineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProveedoresGPS_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProveedoresGPS" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetProveedoresGPS_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProveedoresGPSResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="SetFoto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetFoto" message="tns:IService1_SetFoto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetFotoResponse" message="tns:IService1_SetFoto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFoodLine" message="tns:IService1_GetFoodLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFoodLineResponse" message="tns:IService1_GetFoodLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetProveedor" message="tns:IService1_SetProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetProveedorResponse" message="tns:IService1_SetProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProveedores" message="tns:IService1_GetProveedores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProveedoresResponse" message="tns:IService1_GetProveedores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedorPorUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProveedorPorUsuario" message="tns:IService1_GetProveedorPorUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProveedorPorUsuarioResponse" message="tns:IService1_GetProveedorPorUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPlatos" message="tns:IService1_GetPlatos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPlatosResponse" message="tns:IService1_GetPlatos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPlato">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPlato" message="tns:IService1_SetPlato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPlatoResponse" message="tns:IService1_SetPlato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatosProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPlatosProveedor" message="tns:IService1_GetPlatosProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPlatosProveedorResponse" message="tns:IService1_GetPlatosProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatosActivosProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPlatosActivosProveedor" message="tns:IService1_GetPlatosActivosProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPlatosActivosProveedorResponse" message="tns:IService1_GetPlatosActivosProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlato">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdatePlato" message="tns:IService1_UpdatePlato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdatePlatoResponse" message="tns:IService1_UpdatePlato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPedidoProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPedidoProveedor" message="tns:IService1_GetPedidoProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPedidoProveedorResponse" message="tns:IService1_GetPedidoProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPedidoUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPedidoUsuario" message="tns:IService1_GetPedidoUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPedidoUsuarioResponse" message="tns:IService1_GetPedidoUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetPedido" message="tns:IService1_SetPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetPedidoResponse" message="tns:IService1_SetPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdatePedido" message="tns:IService1_UpdatePedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdatePedidoResponse" message="tns:IService1_UpdatePedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVistoPedidoUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetVistoPedidoUsuario" message="tns:IService1_SetVistoPedidoUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetVistoPedidoUsuarioResponse" message="tns:IService1_SetVistoPedidoUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetVistoPedidoProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetVistoPedidoProveedor" message="tns:IService1_SetVistoPedidoProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetVistoPedidoProveedorResponse" message="tns:IService1_SetVistoPedidoProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComentariosNuevos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetComentariosNuevos" message="tns:IService1_GetComentariosNuevos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetComentariosNuevosResponse" message="tns:IService1_GetComentariosNuevos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetUsuario" message="tns:IService1_SetUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetUsuarioResponse" message="tns:IService1_SetUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUsuario" message="tns:IService1_GetUsuario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUsuarioResponse" message="tns:IService1_GetUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUsuarioProv">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetUsuarioProv" message="tns:IService1_SetUsuarioProv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetUsuarioProvResponse" message="tns:IService1_SetUsuarioProv_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetLike">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetLike" message="tns:IService1_SetLike_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetLikeResponse" message="tns:IService1_SetLike_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFavoritos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFavoritos" message="tns:IService1_GetFavoritos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFavoritosResponse" message="tns:IService1_GetFavoritos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodLineGeo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetFoodLineGeo" message="tns:IService1_GetFoodLineGeo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetFoodLineGeoResponse" message="tns:IService1_GetFoodLineGeo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/Search" message="tns:IService1_Search_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SearchResponse" message="tns:IService1_Search_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetComentario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetComentario" message="tns:IService1_SetComentario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetComentarioResponse" message="tns:IService1_SetComentario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetComentario">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetComentario" message="tns:IService1_GetComentario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetComentarioResponse" message="tns:IService1_GetComentario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetSeguidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SetSeguidor" message="tns:IService1_SetSeguidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SetSeguidorResponse" message="tns:IService1_SetSeguidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeguidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteSeguidor" message="tns:IService1_DeleteSeguidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteSeguidorResponse" message="tns:IService1_DeleteSeguidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SoySeguidor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SoySeguidor" message="tns:IService1_SoySeguidor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SoySeguidorResponse" message="tns:IService1_SoySeguidor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NumSeguidores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/NumSeguidores" message="tns:IService1_NumSeguidores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/NumSeguidoresResponse" message="tns:IService1_NumSeguidores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeguidores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetSeguidores" message="tns:IService1_GetSeguidores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetSeguidoresResponse" message="tns:IService1_GetSeguidores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferencias">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetPreferencias" message="tns:IService1_GetPreferencias_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetPreferenciasResponse" message="tns:IService1_GetPreferencias_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarNotificacionPlato">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/EnviarNotificacionPlato" message="tns:IService1_EnviarNotificacionPlato_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/EnviarNotificacionPlatoResponse" message="tns:IService1_EnviarNotificacionPlato_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneFoodLine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetOneFoodLine" message="tns:IService1_GetOneFoodLine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetOneFoodLineResponse" message="tns:IService1_GetOneFoodLine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedoresGPS">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetProveedoresGPS" message="tns:IService1_GetProveedoresGPS_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetProveedoresGPSResponse" message="tns:IService1_GetProveedoresGPS_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SetFoto">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetFoto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodLine">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFoodLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProveedor">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedores">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProveedores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedorPorUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProveedorPorUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatos">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPlatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPlato">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPlato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatosProveedor">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPlatosProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlatosActivosProveedor">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPlatosActivosProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlato">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdatePlato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPedidoProveedor">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPedidoProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPedidoUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPedidoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetPedido">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePedido">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdatePedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetVistoPedidoUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetVistoPedidoUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetVistoPedidoProveedor">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetVistoPedidoProveedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComentariosNuevos">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetComentariosNuevos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUsuario">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUsuarioProv">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetUsuarioProv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetLike">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetLike" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFavoritos">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFavoritos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFoodLineGeo">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetFoodLineGeo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Search">
+      <soap:operation soapAction="http://tempuri.org/IService1/Search" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetComentario">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetComentario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetComentario">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetComentario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetSeguidor">
+      <soap:operation soapAction="http://tempuri.org/IService1/SetSeguidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSeguidor">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteSeguidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SoySeguidor">
+      <soap:operation soapAction="http://tempuri.org/IService1/SoySeguidor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NumSeguidores">
+      <soap:operation soapAction="http://tempuri.org/IService1/NumSeguidores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeguidores">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetSeguidores" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPreferencias">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetPreferencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarNotificacionPlato">
+      <soap:operation soapAction="http://tempuri.org/IService1/EnviarNotificacionPlato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneFoodLine">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetOneFoodLine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProveedoresGPS">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetProveedoresGPS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

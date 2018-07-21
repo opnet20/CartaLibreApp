@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Delivery.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Delivery.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://opnetin-002-site25.dtempurl.com/Service/Service1.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/WcfService.Modelo" />
+  <xs:complexType name="ArrayOfFoodLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FoodLine" nillable="true" type="tns:FoodLine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFoodLine" nillable="true" type="tns:ArrayOfFoodLine" />
+  <xs:complexType name="FoodLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CPlato" nillable="true" type="tns:Plato" />
+      <xs:element minOccurs="0" name="CProveedor" nillable="true" type="tns:Proveedor" />
+      <xs:element minOccurs="0" name="like" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FoodLine" nillable="true" type="tns:FoodLine" />
+  <xs:complexType name="Plato">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Categoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comentarios" type="xs:int" />
+      <xs:element minOccurs="0" name="Componentes" nillable="true" type="tns:ArrayOfComponente" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Domingo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaCreacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaEntrega" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Hoy" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImagenUsuario" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Insumos" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Jueves" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Lunes" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Martes" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Miercoles" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Precio" type="xs:double" />
+      <xs:element minOccurs="0" name="Sabado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Valoracion" type="xs:int" />
+      <xs:element minOccurs="0" name="Ventas" type="xs:int" />
+      <xs:element minOccurs="0" name="Viernes" type="xs:boolean" />
+      <xs:element minOccurs="0" name="_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idProv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idUsuario" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Plato" nillable="true" type="tns:Plato" />
+  <xs:complexType name="ArrayOfComponente">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Componente" nillable="true" type="tns:Componente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComponente" nillable="true" type="tns:ArrayOfComponente" />
+  <xs:complexType name="Componente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cantidad" type="xs:double" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unidad" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Componente" nillable="true" type="tns:Componente" />
+  <xs:complexType name="Proveedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Categoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoCiudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="D" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Dc" type="xs:int" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Distrito" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Doo" type="xs:int" />
+      <xs:element minOccurs="0" name="IdUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="J" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Jc" type="xs:int" />
+      <xs:element minOccurs="0" name="Jo" type="xs:int" />
+      <xs:element minOccurs="0" name="L" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Lc" type="xs:int" />
+      <xs:element minOccurs="0" name="Lo" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WcfService.Modelo" minOccurs="0" name="Location" nillable="true" type="q2:Point" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="M" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mc" type="xs:int" />
+      <xs:element minOccurs="0" name="Mi" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mic" type="xs:int" />
+      <xs:element minOccurs="0" name="Mio" type="xs:int" />
+      <xs:element minOccurs="0" name="Mo" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroTelefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Referencia" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Registro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Representante" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ruc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="S" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sc" type="xs:int" />
+      <xs:element minOccurs="0" name="So" type="xs:int" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="V" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Vc" type="xs:int" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Vo" type="xs:int" />
+      <xs:element minOccurs="0" name="_id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Proveedor" nillable="true" type="tns:Proveedor" />
+  <xs:complexType name="ArrayOfProveedor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Proveedor" nillable="true" type="tns:Proveedor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProveedor" nillable="true" type="tns:ArrayOfProveedor" />
+  <xs:complexType name="ArrayOfPlato">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Plato" nillable="true" type="tns:Plato" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlato" nillable="true" type="tns:ArrayOfPlato" />
+  <xs:complexType name="ArrayOfPedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Pedido" nillable="true" type="tns:Pedido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPedido" nillable="true" type="tns:ArrayOfPedido" />
+  <xs:complexType name="Pedido">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Adicional" type="xs:double" />
+      <xs:element minOccurs="0" name="Cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="Categoria" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoPago" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Detalle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Envio" type="xs:double" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaEntrega" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaPedido" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaVistaProveedor" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaVistaUsuario" type="xs:dateTime" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfService.Modelo" minOccurs="0" name="Location" nillable="true" type="q3:Point" />
+      <xs:element minOccurs="0" name="Plato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Proveedor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Respuesta" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Select" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Total" type="xs:double" />
+      <xs:element minOccurs="0" name="Usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idPlato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idProv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idUsu" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pedido" nillable="true" type="tns:Pedido" />
+  <xs:complexType name="Usuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apellidos" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Correo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FacebookId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPlayer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdProv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Imagen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Nick" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombres" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroTelefono" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pais" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="Comentario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contenido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ImagenUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NombreUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idPlato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="idUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="valor" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Comentario" nillable="true" type="tns:Comentario" />
+  <xs:complexType name="ArrayOfComentario">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Comentario" nillable="true" type="tns:Comentario" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComentario" nillable="true" type="tns:ArrayOfComentario" />
+</xs:schema>

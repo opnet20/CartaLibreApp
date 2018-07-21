@@ -1,0 +1,1 @@
+<menu xmlns:feedback="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"><item android:id="@+id/action_send" android:title="@string/feedback_send_title" android:icon="@drawable/ic_send" feedback:showAsAction="always" /></menu>

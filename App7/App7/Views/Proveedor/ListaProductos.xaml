@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Views.Proveedores.ListaProductos"  Title="Mis Productos"
+            
+            BackgroundColor="White">
+  <!--<ContentPage.ToolbarItems >
+    --><!--<ToolbarItem Activated="MapButtonClick2"  Order="Primary"  Priority="0" Icon="Logoletra.png"/>--><!--
+    <ToolbarItem Activated="Agregar_Click" x:Name="toolbar"  Order="Primary" Priority="0" Text="AGREGAR"/>
+  </ContentPage.ToolbarItems>-->
+  
+  <!--<TabbedPage.Children>
+    --><!--<ContentPage x:Name="esperasCP" Title="Menú">
+      <Grid>
+        <ListView
+      x:Name="EsperaList"
+      ItemsSource="{Binding PlatosMenu}"
+      VerticalOptions="Start"
+      HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                      <OnPlatform.iOS>
+                        10,5,10,5
+                      </OnPlatform.iOS>
+                      <OnPlatform.Android>
+                        10,5,10,5
+                      </OnPlatform.Android>
+                      <OnPlatform.WinPhone>
+                        20,25,20,25
+                      </OnPlatform.WinPhone>
+                    </OnPlatform>
+                  </Grid.Padding>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="3.5*"/>
+                  </Grid.ColumnDefinitions>
+                  <Image Source="{Binding ImageUri}"></Image>
+                  <StackLayout Grid.Column="2">  
+                    <Label Text="{Binding Nombre}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                    <Label Text="Fechas"  FontSize="12" LineBreakMode="WordWrap"/>
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="End">
+                    <Label Text="S/."  Font="Bold,20"/>
+                    <Label Text="{Binding Precio}"  Font="Bold,20"/>
+                  </StackLayout>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+          <Button Text="AGREGAR" Margin="20"
+                                        VerticalOptions="End"
+                                        HorizontalOptions="End"
+                                        BackgroundColor="#F7A305"
+                                        TextColor="White"
+                                         HeightRequest="50"
+                                      Clicked="Agregar_Click"
+                                       ></Button>
+      </Grid>
+    </ContentPage>--><!--
+    <ContentPage Title="Plato Carta">
+      <Grid>
+        <ListView
+				  ItemsSource="{Binding PlatosCarta}"
+          VerticalOptions="Start"
+          HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                      <OnPlatform.iOS>
+                        10,5,10,5
+                      </OnPlatform.iOS>
+                      <OnPlatform.Android>
+                        10,5,10,5
+                      </OnPlatform.Android>
+                      <OnPlatform.WinPhone>
+                        20,25,20,25
+                      </OnPlatform.WinPhone>
+                    </OnPlatform>
+                  </Grid.Padding>
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />    
+                  </Grid.RowDefinitions>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="3.5*"/>
+                  </Grid.ColumnDefinitions>
+                  <Image Source="{Binding ImageUri}"></Image>
+                  <StackLayout Grid.Column="1">
+                    <Label Text="{Binding Nombre}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                    <Label Text="Fechas"  FontSize="12" LineBreakMode="WordWrap"/>
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="End">
+                    <Label Text="S/."  Font="Bold,20"/>
+                    <Label Text="{Binding Precio}"  Font="Bold,20"/>
+                  </StackLayout>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="AGREGAR" Margin="20"
+                                         VerticalOptions="End"
+                                         HorizontalOptions="End"
+                                         BackgroundColor="#1abc9c"
+                                         TextColor="White"
+                                          HeightRequest="50"
+                                       Clicked="Agregar_Click"
+                                       ></Button>
+      </Grid>
+    </ContentPage>
+    --><!--<ContentPage Title="Historico">
+      <StackLayout>
+        <ListView
+				  ItemsSource="{Binding Historico}"
+          VerticalOptions="Start"
+          HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                      <OnPlatform.iOS>
+                        10,5,10,5
+                      </OnPlatform.iOS>
+                      <OnPlatform.Android>
+                        10,5,10,5
+                      </OnPlatform.Android>
+                      <OnPlatform.WinPhone>
+                        20,25,20,25
+                      </OnPlatform.WinPhone>
+                    </OnPlatform>
+                  </Grid.Padding>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="3.5*"/>
+                  </Grid.ColumnDefinitions>
+                  <Image Source="{Binding ImageUri}"></Image>
+                  <StackLayout Grid.Column="2">
+                    <Label Text="{Binding Nombre}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                    <Label Text="Fechas"  FontSize="12" LineBreakMode="WordWrap"/>
+                  </StackLayout>
+                  <StackLayout Orientation="Horizontal" Grid.Column="3" HorizontalOptions="End">
+                    <Label Text="S/."  Font="Bold,20"/>
+                    <Label Text="{Binding Precio}"  Font="Bold,20"/>
+                  </StackLayout>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        --><!--<StackLayout>
+          <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="5,10,5,10">
+            <Label Text="Total S/." FontSize="Large"></Label>
+            <Label Text="{Binding TotalEspera}" FontSize="Large"></Label>
+          </StackLayout>
+          <Button x:Name="BtPedir" Text="SOLICITAR"
+                  BackgroundColor="#F7A305"
+                  TextColor="White"
+                  HeightRequest="50"
+                  Grid.Column="1"></Button>
+        </StackLayout>--><!--
+      </StackLayout>
+    </ContentPage>--><!--
+  </TabbedPage.Children>-->
+</ContentPage>

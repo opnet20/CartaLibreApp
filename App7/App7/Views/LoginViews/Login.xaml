@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Views.Login"
+             BackgroundColor="White">
+  
+
+  <Grid>
+      <Image Aspect="AspectFill" Source="Spash3.jpg"></Image>
+      <ScrollView  Orientation = "Vertical" VerticalOptions="Center">
+      <StackLayout  Margin="50,10,50,10" VerticalOptions="Center">
+        <Image  Source="logoletras.png" Margin="10,10,10,10" HeightRequest="80"></Image>
+        <Label  Text="Todos los platillos de tu localidad están AQUÍ" LineBreakMode="WordWrap"
+                FontSize="15" TextColor="Gray"  HorizontalTextAlignment="Center" />
+        <!--<Label  Text="Usuario"   FontSize="Small" />-->
+        <!--<Entry x:Name="usuarioTB" Placeholder="Usuario"></Entry>-->
+        <!--<Label  Text="Contraseña"  FontSize="Small" />-->
+        <!--<Entry x:Name="passTB" Placeholder="Contraseña"></Entry>-->
+        <!--<Button Text="Ingresar"Auth_Completed
+                BackgroundColor="#EF4F50"
+                TextColor="White"
+                  HeightRequest="50" Clicked="Login_Click"></Button>-->
+
+          <Entry x:Name="nombreTB" Text=""  Placeholder="Usuario" BackgroundColor="Transparent" PlaceholderColor="Gray"
+                   HorizontalOptions="FillAndExpand" TextColor="Gray"></Entry>
+
+
+          <Entry x:Name="passTB" Placeholder="Contraseña"  BackgroundColor="Transparent" IsPassword="True" PlaceholderColor="Gray"
+                  HorizontalOptions="FillAndExpand" TextColor="Gray"></Entry>
+
+          <Button x:Name="loginButton"
+            Text="INGRESAR"
+                  BackgroundColor="#F7A305"
+                  TextColor="White"
+                  HeightRequest="50"
+                  Clicked="Guardar_Click" Grid.Column="1"></Button>
+          <Button Text="REGISTRO"
+                BackgroundColor="#1abc9c"
+                TextColor="White"
+                  HeightRequest="50"  Clicked="Registro_Click"></Button>
+
+          <Button Text="FACEBOOK"
+                BackgroundColor="#2553B4"
+                TextColor="White"
+                  HeightRequest="50"  Clicked="Facebook_Click"></Button>
+     
+      
+          <!--<Label Text="REGISTRATE" HorizontalOptions="Center" x:Name="registroLb" FontAttributes="Bold" Font="Large" Margin="10">
+            <Label.GestureRecognizers>
+              <TapGestureRecognizer  Tapped="Registro_Click" NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+          </Label>-->
+          <!--<Button 
+                BackgroundColor="#1abc9c"
+                TextColor="White"
+                  HeightRequest="50" Clicked="Registro_Click"></Button>-->
+   
+          <ActivityIndicator x:Name="loading" Color="White" />
+    </StackLayout>
+      </ScrollView>
+  </Grid>
+</ContentPage>

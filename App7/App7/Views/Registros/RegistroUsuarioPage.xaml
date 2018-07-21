@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="App7.Views.RegistroUsuarioPage" BackgroundColor="White" Title ="Registro">
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem Activated="Guardar_Click" x:Name="guardarBt" Order="Primary" Priority="0" Icon="ic_save_white_24dp.png"/>
+  </TabbedPage.ToolbarItems>
+  <ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
+    <StackLayout Margin="16">
+      <Label Text="Añade tu nombre de usuario y tu foto" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+             TextColor="#7f8c8d" Font="16,Bold" Margin="0,10,0,10" x:Name="msjLB"></Label>
+
+      <Grid>
+        <controls:CircleImage x:Name="imagenCir" VerticalOptions="Center" HorizontalOptions="Center"
+                               BorderColor = "White"
+                    BorderThickness="3"
+                    Aspect="AspectFill" >
+          <controls:CircleImage.WidthRequest>
+            <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150"/>
+          </controls:CircleImage.WidthRequest>
+          <controls:CircleImage.HeightRequest>
+            <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150" />
+          </controls:CircleImage.HeightRequest>
+          <controls:CircleImage.Source>
+            <UriImageSource Uri="{Binding User.ImageUri}"  CachingEnabled="False"/>
+            <!--<UriImageSource CacheValidity="14" CachingEnabled="true"/>-->
+          </controls:CircleImage.Source>
+        </controls:CircleImage>
+        <controls:CircleImage  VerticalOptions="Center" HorizontalOptions="Center"
+                            BorderColor = "White"
+                               Source="{Binding ImageSource}"
+                 BorderThickness="3"
+                 Aspect="AspectFill" >
+          <controls:CircleImage.WidthRequest>
+            <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150"/>
+          </controls:CircleImage.WidthRequest>
+          <controls:CircleImage.HeightRequest>
+            <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150" />
+          </controls:CircleImage.HeightRequest>
+        </controls:CircleImage>
+      </Grid>
+      <!--<Image Source="{Binding ImageSource}" VerticalOptions="CenterAndExpand" />-->
+      <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+        <Button BackgroundColor="#e67e22"  Command="{Binding TakePictureCommand}"
+                TextColor="White"
+                Text="Tomar Foto" FontSize="10"/>
+        <Button BackgroundColor="#e74c3c" Command="{Binding SelectPictureCommand}"
+                TextColor="White"
+                Text="Seleccionar" FontSize="10"/>  
+      </StackLayout>
+      <!--<Entry Text="{Binding VideoInfo}" VerticalOptions="CenterAndExpand" />-->
+      <StackLayout x:Name="CompFormSL">
+        <!--PERSONAL-->
+        <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+          <Label Text="Nombres y Apellidos" FontSize="Small"
+                 VerticalTextAlignment="Center" VerticalOptions="Center"
+                  FontAttributes="Bold" Margin="10,0,0,0"></Label>
+        </Grid>
+        <StackLayout Orientation="Horizontal">
+          <!--<Image Source="ic_store_red_light_24dp.png"></Image>-->
+          <Entry Placeholder="Nombres" Text="{Binding User.Nombres}" 
+                 Margin="12,0,12,0" HorizontalOptions="FillAndExpand"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <!--<Image Source="ic_input_24dp.png"></Image>-->
+            <Entry Margin="12,0,12,0"  Placeholder="Apellidos"
+                   Text="{Binding User.Apellidos}" HorizontalOptions="FillAndExpand"></Entry>
+        </StackLayout>
+        <!--UBICACION-->
+        <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+          <Label Text="Ubicación" FontSize="Small"
+                 VerticalTextAlignment="Center" VerticalOptions="Center"
+                  FontAttributes="Bold" Margin="10,0,0,0"></Label>
+        </Grid>
+        <!--<StackLayout Orientation="Horizontal">
+          <Label  Margin="12,0,12,0" Text="Ubicar por GPS" FontSize="16" HorizontalOptions="FillAndExpand"></Label>
+          <Switch HorizontalOptions="End"></Switch>  
+        </StackLayout>-->
+        <!--<StackLayout Orientation="Horizontal">
+          <Image Source="ic_language_red_light_24dp.png"></Image>
+          <Picker Title="Pais" HorizontalOptions="FillAndExpand"></Picker>
+        </StackLayout>-->
+        <StackLayout Orientation="Horizontal">
+          <Picker x:Name="Ciudad2" Margin="10,0,0,0" Title="Ciudad" HorizontalOptions="FillAndExpand">
+            <Picker.Items>
+              <x:String>Arequipa</x:String>
+              <x:String>Huaraz</x:String>
+              <x:String>Lima</x:String>
+              <x:String>Piura</x:String>
+              <x:String>Sullana</x:String>
+              <x:String>Trujillo</x:String>
+            </Picker.Items>
+          </Picker>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <!--<Image Source="ic_my_location_red_light_24dp.png"></Image>-->
+          <Entry Placeholder="Dirección" Margin="12,0,12,0" Text="{Binding User.Direccion}" 
+                 HorizontalOptions="FillAndExpand"></Entry>  
+        </StackLayout>
+
+        <!--CUENTA-->
+        <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+          <Label Text="Cuenta" FontSize="Small"
+                 VerticalTextAlignment="Center" VerticalOptions="Center"
+                  FontAttributes="Bold" Margin="10,0,0,0"></Label>
+        </Grid>
+        <StackLayout Orientation="Horizontal">
+          <!--<Image Source="ic_extension_red_light_24dp.png"></Image>-->
+          <Entry Margin="12,0,12,0" Placeholder="Nombre de usuario" Text="{Binding User.Nick}"
+                 HorizontalOptions="FillAndExpand"></Entry>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+          <!--<Image Source="ic_description_red_light_24dp.png"></Image>-->
+          <Entry Placeholder="Password" Text="{Binding User.Password}" IsPassword="true"
+                 HorizontalOptions="FillAndExpand" Margin="12,0,12,0"></Entry>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout x:Name="CompFormRE">
+        <StackLayout>
+          <!--<Image Source="ic_extension_red_light_24dp.png"></Image>-->
+          <Entry Margin="12,0,12,0" Placeholder="Nombre de usuario" Text="{Binding User.Nick}" 
+                 HorizontalOptions="FillAndExpand"></Entry>
+          <Entry Margin="12,0,12,0" Placeholder="Correo Electronico" Text="{Binding User.Correo}" 
+                 HorizontalOptions="FillAndExpand"></Entry>
+          <Entry Margin="12,0,12,0"  Placeholder="Password" Text="{Binding User.Password}" IsPassword="true"
+                 HorizontalOptions="FillAndExpand"></Entry>
+        </StackLayout>
+       
+      </StackLayout>
+      <StackLayout>
+      <Button Text="Siguiente" Margin="50,5,50,5" BackgroundColor="#1abc9c" x:Name="guardarBt2"
+                                          TextColor="White"
+                                           HeightRequest="50" Clicked="Guardar_Click"></Button>
+      </StackLayout>
+      <ActivityIndicator x:Name="loading" Color="Red" />
+    </StackLayout>
+  </ScrollView>
+</ContentPage>

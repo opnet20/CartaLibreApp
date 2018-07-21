@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+	xmlns:local="clr-namespace:App7;assembly=App7"
+     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+  xmlns:controls2="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+  x:Class="App7.ProveedoresPage"
+	IsBusy="{Binding IsBusy}">
+  <Grid>
+    <!--<ContentPage Title="Favoritos">
+      <Grid BackgroundColor="White">
+        <ListView x:Name="FavoritosList"
+                   SelectedItem="{Binding SelectedProveedor, Mode=TwoWay}"
+                   IsPullToRefreshEnabled="True" 
+                   ItemsSource="{Binding Favoritos}"
+                 HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="6*"/>
+                  </Grid.ColumnDefinitions>
+                  --><!--<Image Aspect="AspectFit" Source="{Binding ImageUri}"></Image>--><!--
+                  <Image  HeightRequest="80" WidthRequest="80"
+                         Margin="2" Aspect="AspectFill" Source="{Binding ImageUri}"></Image>
+                  <StackLayout
+                               Grid.Column="1"
+                               Padding="8"
+                               Spacing="1"
+                               VerticalOptions="Center">
+                    <Label Text="{Binding Nombre}" FontSize="Medium"  TextColor="#293426" LineBreakMode="NoWrap"/>
+                    <Label Text="{Binding Tipo}" FontSize="12" LineBreakMode="WordWrap"/>
+                    <Label Text="{Binding Descripcion}" FontSize="Small" LineBreakMode="WordWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                      <Image Aspect="AspectFill" Source="ic_location_on_red_light_24dp.png"></Image>
+                      <Label Text="{Binding Direccion}" FontSize="Small" LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                  </StackLayout>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Spacing="10"
+                       Padding="10" IsVisible="{Binding IsBusy}">
+          <ActivityIndicator  HorizontalOptions="Center"
+                     IsRunning="{Binding IsBusy}"
+                     IsVisible="{Binding IsBusy}"/>
+          <Label HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Text="Cargando..."/>
+        </StackLayout>
+      </Grid>
+    </ContentPage>-->
+   
+      <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="*" />
+          <!--<RowDefinition Height="40" />-->
+        </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0" Margin="0,-10">
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+              <Label Text="Radio de Busqueda" Margin="0,20,0,-10"  VerticalOptions="Center" 
+                     VerticalTextAlignment="Center" HorizontalOptions="Center" FontSize="12"></Label>
+              <Button x:Name="localizarBt" Margin="0,20,0,-10"
+                  Text="Localizar" HeightRequest="28"
+                  BackgroundColor="#EF4F50"
+                  TextColor="White" FontSize="7"
+                  VerticalOptions="Center"
+                  Clicked="Localizar_Click"></Button>
+          </StackLayout>
+        
+          <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+             <Label x:Name="valNum" Text="1" FontAttributes="Bold" FontSize="50" VerticalOptions="Center"></Label>
+             <Label  Text="Km" FontSize="20" VerticalOptions="Center"></Label>
+             <controls2:ImageButton  BackgroundColor="Transparent"
+                                      Margin="0,0,-15,0"
+                                      HeightRequest="50"
+                                      Source="ic_add_circle_blue_light_36dp.png"
+                                      Clicked="mas_Click"/>
+             <controls2:ImageButton  BackgroundColor="Transparent"
+                                    Margin="-15,0,0,0"
+                                      HeightRequest="50"
+                                      Source="ic_remove_circle_red_light_36dp.png"
+                                      Clicked="menos_Click"/>
+          </StackLayout>
+        </StackLayout>
+        <SearchBar Placeholder="Busca por nombre, tipo, dirección..." Margin="0,-10,0,0" x:Name="searchBar" Grid.Row="1"></SearchBar>
+        <ListView Grid.Row="2"
+           x:Name="ProveedorList"
+                   IsPullToRefreshEnabled="True" 
+                   SelectedItem="{Binding SelectedProveedor, Mode=TwoWay}"
+                   ItemsSource="{Binding Proveedores}"
+                 HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="100"/>
+                  </Grid.ColumnDefinitions>
+                  <controls:CircleImage VerticalOptions="Center"
+                        BorderColor = "White"
+                        BorderThickness="0"
+                        Aspect="AspectFill">
+                    <controls:CircleImage.WidthRequest>
+                      <OnPlatform x:TypeArguments="x:Double" iOS="50" Android="50" WinPhone="75"/>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                      <OnPlatform x:TypeArguments="x:Double" iOS="30" Android="55" WinPhone="75"/>
+                    </controls:CircleImage.HeightRequest>
+                    <controls:CircleImage.Source>
+                      <UriImageSource Uri="{Binding ImageUri}" CacheValidity="14" CachingEnabled="true"/>
+                    </controls:CircleImage.Source>
+                  </controls:CircleImage>
+                  <!--<Image  HeightRequest="80" WidthRequest="80"
+                         Margin="2" Aspect="AspectFill" Source="{Binding ImageUri}"></Image>-->
+                  <StackLayout
+                               Grid.Column="1"
+                               Padding="8"
+                               Spacing="1"
+                               VerticalOptions="Center">
+                    <Label Text="{Binding Nombre}" FontSize="Medium"  TextColor="#293426" LineBreakMode="NoWrap"/>
+                    <Label Text="{Binding Tipo}" FontSize="12" LineBreakMode="WordWrap"/>
+                    <Label Text="{Binding Descripcion}" FontSize="Small" LineBreakMode="WordWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                      <Image Aspect="AspectFill" Source="ic_location_on_red_light_24dp.png"></Image>
+                      <Label Text="{Binding Direccion}" FontSize="Small" LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                  </StackLayout>
+                  
+                  <Grid Margin="4,2"  Grid.Column="2">
+                      <!--<ffimageloading:CachedImage  x:Name="likeImg"
+                                                  Aspect="AspectFit" 
+                                                  CacheDuration="14" 
+                                                  Source="http://cartalibre.com/img/star.png"
+                                                  FadeAnimationEnabled="True"
+                                                  DownsampleToViewSize="True"
+                                                       
+                                                  Margin="0">
+                      </ffimageloading:CachedImage>
+                      <controls2:ImageButton   BackgroundColor="Transparent"
+                                            x:Name="seguirBt2"
+                                                
+                                                  
+                                            HorizontalOptions="Center" 
+                                            CommandParameter="{Binding _id}"
+                                            Clicked="Seguir_Click">
+                      </controls2:ImageButton>-->
+                    <Button  BackgroundColor="#e6e6e6" CommandParameter="{Binding _id}" 
+                              TextColor="#1abc9c" FontSize="12" BorderColor="#1abc9c"
+                              VerticalOptions="Center"
+                      Text="Siguiendo"></Button>
+                        
+                    <Button IsVisible ="{Binding VerSigo}" CommandParameter="{Binding _id}"
+                            BackgroundColor="#1abc9c"  TextColor="White" FontSize="12"
+                            VerticalOptions="Center"
+                      Text="Seguir" Clicked="Seguir_Click"></Button>
+                        
+                  </Grid>
+                  <!--<Label x:Name="seguirLb" 
+                        HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                      FontSize="Small"  TextColor="#EF4F50" Margin="2" 
+                      VerticalTextAlignment="Center"></Label>-->
+                 
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Row="2" Spacing="10"
+                       Padding="10" IsVisible="{Binding IsBusy}">
+          <ActivityIndicator  HorizontalOptions="Center"
+                     IsRunning="{Binding IsBusy}"
+                     IsVisible="{Binding IsBusy}"/>
+          <Label HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Text="Cargando..."/>
+        </StackLayout>
+        <!--<Grid  Grid.Row="3">
+      
+            <Button x:Name="loginButton"
+                Text="Cerrar"
+                BackgroundColor="#F7A305"
+                TextColor="White"
+               
+                VerticalOptions="Center"
+                Clicked="OK_Click"></Button>
+          
+        </Grid>-->
+      </Grid>
+   
+  </Grid>
+</ContentPage>

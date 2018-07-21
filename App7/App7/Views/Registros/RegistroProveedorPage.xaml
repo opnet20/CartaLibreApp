@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:xlabs="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             BarTextColor="White"
+             x:Class="App7.Views.RegistroProveedorPage"
+          
+             Title ="Provedor">
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem Activated="Guardar_Click" x:Name="GuardarBt" Order="Primary" Priority="0" Icon="ic_save_white_24dp.png"/>
+  </TabbedPage.ToolbarItems>
+  <TabbedPage.Resources>
+    <ResourceDictionary>
+      this isn't working yet
+      <DataTemplate x:Key="SugestionItemTemplate">
+        <ViewCell Height="60">
+          <ViewCell.View>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+              <Label HorizontalOptions="Start"
+                     Text="{Binding}" FontAttributes="Italic"
+                     VerticalOptions="Center" />
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ResourceDictionary>
+  </TabbedPage.Resources>
+  <TabbedPage.Children>
+    <ContentPage Title="Perfil">
+      <Grid   BackgroundColor="White">
+        <ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
+            <StackLayout>
+
+            <Label  Text="¡Registrate como proveedor y empieza a vender!" HorizontalOptions="Center" HorizontalTextAlignment="Center"
+                   TextColor="#7f8c8d" Font="16,Bold" Margin="16,26,16,10" x:Name="msjLB"></Label>
+            <Grid>
+              <controls:CircleImage x:Name="imagenCir" VerticalOptions="Center" HorizontalOptions="Center"
+                                     BorderColor = "White"
+                          BorderThickness="3"
+                          Aspect="AspectFill" >
+                <controls:CircleImage.WidthRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150"/>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150" />
+                </controls:CircleImage.HeightRequest>
+                <controls:CircleImage.Source>
+                  <UriImageSource Uri="{Binding Prov.ImageUri}" CachingEnabled="False"/>
+                  <!--<UriImageSource CacheValidity="14" CachingEnabled="true"/>-->
+                </controls:CircleImage.Source>
+              </controls:CircleImage>
+              <controls:CircleImage  VerticalOptions="Center" HorizontalOptions="Center"
+                                  BorderColor = "White"
+                                     Source="{Binding ImageSource}"
+                       BorderThickness="3"
+                       Aspect="AspectFill" >
+                <controls:CircleImage.WidthRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150"/>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="150" Android="150" WinPhone="150" />
+                </controls:CircleImage.HeightRequest>
+              </controls:CircleImage>
+            </Grid>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+              <Button BackgroundColor="#e67e22"  Command="{Binding TakePictureCommand}" 
+                       TextColor="White"
+                      Text="Tomar Foto" FontSize="10"/>
+              <Button BackgroundColor="#e74c3c" Command="{Binding SelectPictureCommand}" 
+                       TextColor="White"
+                      Text="Seleccionar" FontSize="10"/>
+            </StackLayout>
+      
+            <!--PROVEEDOR-->
+            <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+              <Label Text="Información del Proveedor" FontSize="Small" 
+                     VerticalTextAlignment="Center" VerticalOptions="Center"
+                      FontAttributes="Bold" Margin="10,0,0,0"></Label>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Nombre}"  Placeholder="Nombre" 
+                     HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>  
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Entry Text="{Binding Prov.Descripcion}" Placeholder="Descripción" 
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+            <!--<xlabs:AutoCompleteView 
+              x:Name="MyAutoComplete"  HorizontalOptions="FillAndExpand"
+                              Placeholder="Tipo de comida"
+                              ShowSearchButton="False"
+                              SearchBackgroundColor="White"
+                              SearchTextColor = "Black"
+                              SearchHorizontalOptions="FillAndExpand"
+                              Margin="12,0,0,0"
+                              SuggestionBackgroundColor="#e3e6e8"
+                              SearchCommand="{Binding SearchCommand}"
+                              Suggestions="{Binding Items, Mode=TwoWay}"
+                              SelectedItem ="{Binding SelectedItem}"/>-->
+              <Picker x:Name="tiposPi" Margin="10,0,0,0" Title="Tipo de Producto" HorizontalOptions="FillAndExpand">
+         
+              </Picker>
+            </StackLayout>  
+       
+            <!--LEGAL-->
+            <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+              <Label Text="Información legal" FontSize="Small" 
+                     VerticalTextAlignment="Center" VerticalOptions="Center"
+                      FontAttributes="Bold" Margin="10,0,0,0"></Label>
+            </Grid>
+            <StackLayout>
+              <Label Text="Completar esta información te convierte en un proveedor calificado" FontSize="Small" 
+                     VerticalTextAlignment="Center" VerticalOptions="Center" LineBreakMode="WordWrap"
+                      Margin="12,0,12,0"></Label>
+              <StackLayout Orientation="Horizontal">
+                <Label Text="Actualmente eres un proveedor nuevo:" FontSize="Small" FontAttributes="Bold" x:Name="catProveLb"
+                     VerticalTextAlignment="Center" VerticalOptions="Center" LineBreakMode="WordWrap"
+                      Margin="12,0,12,0"></Label>
+                <Image Source="{Binding Prov.ImageCategoria}" x:Name="catImg" HeightRequest="20"></Image>
+              </StackLayout>
+        
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Representante}"  Placeholder="Representante" 
+                     HorizontalOptions="FillAndExpand" TextChanged="Legal_Completed" Margin="12,0,0,0"/>  
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Ruc}"  Placeholder="R.U.C." 
+                     HorizontalOptions="FillAndExpand" TextChanged="Legal_Completed" Margin="12,0,0,0"/>  
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Registro}" TextChanged="Legal_Completed" Placeholder="Registro" 
+                     HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>  
+            </StackLayout>
+            <!--UBICACION-->
+            <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+              <Label Text="Ubicación" FontSize="Small" 
+                      VerticalTextAlignment="Center" VerticalOptions="Center"
+                     FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+              <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                <Label Text="Usar GPS"  VerticalTextAlignment="Center"></Label>
+                <Switch HorizontalOptions="End" x:Name="checkGPS" Toggled="Toggled_Click"></Switch>  
+              </StackLayout>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+              <Picker x:Name="paisPi" Margin="10,0,0,0" Title="Pais" HorizontalOptions="FillAndExpand">
+                 <Picker.Items>
+                    <x:String>Perú</x:String> 
+                 </Picker.Items>
+              </Picker>  
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Picker x:Name="cuidadPi" Margin="10,0,0,0" Title="Ciudad" HorizontalOptions="FillAndExpand">
+                 <Picker.Items>
+                    <x:String>Arequipa</x:String>
+                    <x:String>Huaraz</x:String>
+                    <x:String>Lima</x:String>
+                    <x:String>Piura</x:String>
+                    <x:String>Sullana</x:String>
+                    <x:String>Trujillo</x:String>
+                </Picker.Items>
+              </Picker>  
+            </StackLayout>
+             <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Direccion}" Margin="12,0,12,0" Placeholder="Dirección" 
+                     HorizontalOptions="FillAndExpand"></Entry>  
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Referencia}" Margin="12,0,0,0" Placeholder="Referencia"
+                     HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="" x:Name="latLb" Margin="12,0,0,0" Placeholder="Latitud"
+                      HorizontalOptions="FillAndExpand"></Entry>
+              <Entry Text="" x:Name="lonLb" Margin="12,0,0,0" Placeholder="Longitud"
+                     HorizontalOptions="FillAndExpand"></Entry>
+            </StackLayout>
+              <!--CONTACTO-->
+            <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+              <Label Text="Contacto" FontSize="Small" 
+                      VerticalTextAlignment="Center" VerticalOptions="Center"
+                     FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+            </Grid>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.NumeroTelefono}" Placeholder="Numero Contacto" Margin="12,0,0,0" HorizontalOptions="FillAndExpand"></Entry>  
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+              <Entry Text="{Binding Prov.Correo}" Placeholder="Correo" Margin="12,0,0,0" HorizontalOptions="FillAndExpand"></Entry>  
+            </StackLayout>
+            <!--<Button Text="Guardar"  BackgroundColor="#F7A305" x:Name="GuardarBt"
+                                                TextColor="White"
+                                                 HeightRequest="50" Clicked="Guardar_Click"></Button>-->
+          </StackLayout>
+        </ScrollView>
+        <ActivityIndicator x:Name="loading" Color="Red"  VerticalOptions="Center"/>
+      </Grid>
+    </ContentPage>
+    <ContentPage Title="Horario de Atención">
+      <Grid   BackgroundColor="White">
+         <ScrollView  Orientation = "Vertical" VerticalOptions="StartAndExpand">
+            <StackLayout>
+              <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                <Label Text="Lunes" FontSize="Small"
+                       VerticalTextAlignment="Center" VerticalOptions="Center"
+                        FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                      <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                      <Switch HorizontalOptions="End" IsToggled="{Binding Prov.L}" Toggled="ToggledDiasL_Click"></Switch>  
+                    </StackLayout>
+              </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackL">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Lo}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Lc}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+      
+             <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                  <Label Text="Martes" FontSize="Small"
+                         VerticalTextAlignment="Center" VerticalOptions="Center"
+                          FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                  <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                        <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                        <Switch HorizontalOptions="End" IsToggled="{Binding Prov.M}" Toggled="ToggledDiasM_Click"></Switch>  
+                      </StackLayout>
+                </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackM">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Mo}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Mc}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+
+              <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                    <Label Text="Miercoles" FontSize="Small"
+                           VerticalTextAlignment="Center" VerticalOptions="Center"
+                            FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                          <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                          <Switch HorizontalOptions="End" IsToggled="{Binding Prov.Mi}" Toggled="ToggledDiasMi_Click"></Switch>  
+                        </StackLayout>
+                  </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackMi">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Mio}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Mic}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+
+             <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                      <Label Text="Jueves" FontSize="Small"
+                             VerticalTextAlignment="Center" VerticalOptions="Center"
+                              FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                      <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                            <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Prov.J}" Toggled="ToggledDiasJ_Click"></Switch>  
+                          </StackLayout>
+                    </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackJ">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Jo}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Jc}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+
+             <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                      <Label Text="Viernes" FontSize="Small"
+                             VerticalTextAlignment="Center" VerticalOptions="Center"
+                              FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                      <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                            <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Prov.V}" Toggled="ToggledDiasV_Click"></Switch>  
+                          </StackLayout>
+                    </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackV">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Vo}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Vc}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+
+             <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                      <Label Text="Sabado" FontSize="Small"
+                             VerticalTextAlignment="Center" VerticalOptions="Center"
+                              FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                      <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                            <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Prov.S}" Toggled="ToggledDiasS_Click"></Switch>  
+                          </StackLayout>
+                    </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackS">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.So}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Sc}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+
+             <Grid BackgroundColor="#e3e6e8" HeightRequest="40">
+                      <Label Text="Domingo" FontSize="Small"
+                             VerticalTextAlignment="Center" VerticalOptions="Center"
+                              FontAttributes="Bold" Margin="10,0,0,0"></Label>
+                      <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                            <Label Text="Abrir "  VerticalTextAlignment="Center"></Label>
+                            <Switch HorizontalOptions="End" IsToggled="{Binding Prov.D}" Toggled="ToggledDiasD_Click"></Switch>  
+                          </StackLayout>
+                    </Grid>
+              <StackLayout Orientation="Horizontal" x:Name="stackD">
+                <Label Text="Abre: " FontSize="Small"
+                            VerticalTextAlignment="Center" VerticalOptions="Center"
+                           FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Doo}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+                <Label Text="Cierra: " FontSize="Small"
+                          VerticalTextAlignment="Center" VerticalOptions="Center"
+                         FontAttributes="Bold"  Margin="10,0,0,0"></Label>
+                <Entry Text="{Binding Prov.Dc}"  Placeholder="0"
+                       HorizontalOptions="FillAndExpand"  Margin="12,0,0,0"/>
+              </StackLayout>
+            </StackLayout>
+         </ScrollView>
+      </Grid>
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>CARMENCITA</Machine>
+    <WindowsUser>Alvaro</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>27c4d8f6-6d2d-4338-9930-8a15078e8e32</PackageIdentityName>
+    <IntermediateOutputPath>D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\obj\Debug\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\App7.Windows.exe">
+      <PackagePath>App7.Windows.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\App7.dll">
+      <PackagePath>App7.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\lib\MvvmHelpers.dll">
+      <PackagePath>MvvmHelpers.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Core.dll">
+      <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.dll">
+      <PackagePath>Xamarin.Forms.Platform.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.dll">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet.dll">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Xaml.dll">
+      <PackagePath>Xamarin.Forms.Xaml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Settings.Abstractions.dll">
+      <PackagePath>Plugin.Settings.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Delivery.Model.dll">
+      <PackagePath>Delivery.Model.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Messaging.Abstractions.dll">
+      <PackagePath>Plugin.Messaging.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Xamarin.Forms.Maps.dll">
+      <PackagePath>Xamarin.Forms.Maps.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Microsoft.WindowsAzure.Mobile.dll">
+      <PackagePath>Microsoft.WindowsAzure.Mobile.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Settings.dll">
+      <PackagePath>Plugin.Settings.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.ExternalMaps.dll">
+      <PackagePath>Plugin.ExternalMaps.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.ExternalMaps.Abstractions.dll">
+      <PackagePath>Plugin.ExternalMaps.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Messaging.dll">
+      <PackagePath>Plugin.Messaging.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\System.Net.Http.Primitives.dll">
+      <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\App7.Windows.xr.xml">
+      <PackagePath>App7.Windows.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT\PageControl.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT\PageControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT\StepperControl.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT\StepperControl.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT\Xamarin.Forms.Platform.WinRT.xr.xml">
+      <PackagePath>Xamarin.Forms.Platform.WinRT\Xamarin.Forms.Platform.WinRT.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\FormsTextBoxStyle.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\FormsTextBoxStyle.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\Resources.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\Resources.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\TabletResources.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\TabletResources.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\Xamarin.Forms.Platform.WinRT.Tablet.xr.xml">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\Xamarin.Forms.Platform.WinRT.Tablet.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

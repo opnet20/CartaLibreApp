@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Views.Proveedor.TabProveedor">
+  <TabbedPage.Children>
+    <ContentPage x:Name="esperasCP" Title="Apuntados">
+      <StackLayout>
+         <!--<ListView
+                x:Name="PlatoList"
+                SelectedItem="{Binding SelectedPlato, Mode=TwoWay}"
+                ItemsSource="{Binding PlatosGrouped}"
+                IsGroupingEnabled="True"
+                GroupDisplayBinding="{Binding Key}"
+                HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                      <OnPlatform.iOS>
+                        10,5,10,5
+                      </OnPlatform.iOS>
+                      <OnPlatform.Android>
+                        10,5,10,5
+                      </OnPlatform.Android>
+                      <OnPlatform.WinPhone>
+                        20,25,20,25
+                      </OnPlatform.WinPhone>
+                    </OnPlatform>
+                  </Grid.Padding>
+
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="150" />   
+                  </Grid.RowDefinitions>
+                  <Grid>
+                    <Image Aspect="AspectFill" Source="{Binding ImageUri}"></Image>
+                    <Grid VerticalOptions="Start" 	>                               
+                        <Label VerticalOptions="Start" HorizontalOptions="Start"
+                              Text=""  
+                                TextColor="White"
+      FontSize="Large" />                          
+                      </Grid>
+                    <Grid VerticalOptions="Start">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>  
+                      </Grid.ColumnDefinitions>
+                        --><!--<StackLayout VerticalOptions="Start" HorizontalOptions="Start">
+                        </StackLayout>--><!--                                
+                        <Label VerticalOptions="Start" HorizontalOptions="Start"
+                              Text="{Binding Nombre}"  
+                                TextColor="White"
+                                FontSize="Large" />
+                        <Label VerticalOptions="Start" HorizontalOptions="End"
+                              Text="S/.250.50"  
+                                TextColor="White"
+                                FontSize="Large" Grid.Column="1"/>
+                               
+                      </Grid>
+                    <Grid VerticalOptions="End">
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="3*"/>  
+                      </Grid.ColumnDefinitions>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                          <Image Source="iconNumRest.png"></Image>
+                          <Label Text="8" FontSize="Small" TextColor="White" FontAttributes="Bold" Margin="0,0,15,0"/>
+                          <Image Source="iconNumYumi.png"></Image>
+                          <Label Text="12" FontSize="Small" TextColor="White" FontAttributes="Bold" Margin="0,0,15,0"/>
+                          <Label Text="8 C" FontSize="Small" TextColor="White"/>
+                        </StackLayout>
+                        <Button Text="PEDIR"
+                              BackgroundColor="#F7A305"
+                              TextColor="White"
+                                HeightRequest="50"
+                              CommandParameter="{Binding id}"
+                              Grid.Column="1" Clicked="AgregarPedido_Click"></Button>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>-->
+      </StackLayout>  
+    </ContentPage>
+    <ContentPage Title="Pedidos">
+      <Grid>
+      
+      </Grid>
+    </ContentPage>
+   
+  </TabbedPage.Children>
+</TabbedPage>

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>CARMENCITA</Machine>
+    <WindowsUser>Alvaro</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>6.3</TargetOsVersion>
+    <TargetOsDescription>Windows 8.1</TargetOsDescription>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>27c4d8f6-6d2d-4338-9930-8a15078e8e32</PackageIdentityName>
+    <IntermediateOutputPath>D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\obj\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>3B5DF900173339E5FD9061AF8507D8A99E6605FD3732EF2769925177187E0DE8</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>27c4d8f6-6d2d-4338-9930-8a15078e8e32_1.0.0.0_neutral__x9jq2v4k89vwc</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>27c4d8f6-6d2d-4338-9930-8a15078e8e32_x9jq2v4k89vwc!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>27c4d8f6-6d2d-4338-9930-8a15078e8e32</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Alvaro</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-03-10T16:23:22.299</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\App7.Windows.exe">
+      <PackagePath>App7.Windows.exe</PackagePath>
+      <Modified>2017-03-10T16:23:17.143</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\App7.dll">
+      <PackagePath>App7.dll</PackagePath>
+      <Modified>2017-03-10T14:06:11.026</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\lib\MvvmHelpers.dll">
+      <PackagePath>MvvmHelpers.dll</PackagePath>
+      <Modified>2017-02-13T21:33:04.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Core.dll">
+      <PackagePath>Xamarin.Forms.Core.dll</PackagePath>
+      <Modified>2017-02-13T12:08:09.156</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.dll">
+      <PackagePath>Xamarin.Forms.Platform.dll</PackagePath>
+      <Modified>2017-02-13T12:08:09.534</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.dll">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.dll</PackagePath>
+      <Modified>2017-02-13T12:08:09.627</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet.dll">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet.dll</PackagePath>
+      <Modified>2017-02-13T12:08:09.753</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Xaml.dll">
+      <PackagePath>Xamarin.Forms.Xaml.dll</PackagePath>
+      <Modified>2017-02-13T12:08:09.901</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Settings.Abstractions.dll">
+      <PackagePath>Plugin.Settings.Abstractions.dll</PackagePath>
+      <Modified>2017-02-14T19:37:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Delivery.Model.dll">
+      <PackagePath>Delivery.Model.dll</PackagePath>
+      <Modified>2017-03-10T14:03:43.067</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Messaging.Abstractions.dll">
+      <PackagePath>Plugin.Messaging.Abstractions.dll</PackagePath>
+      <Modified>2017-02-14T19:38:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Xamarin.Forms.Maps.dll">
+      <PackagePath>Xamarin.Forms.Maps.dll</PackagePath>
+      <Modified>2017-02-15T13:24:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+      <Modified>2017-02-14T19:31:22.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Microsoft.WindowsAzure.Mobile.dll">
+      <PackagePath>Microsoft.WindowsAzure.Mobile.dll</PackagePath>
+      <Modified>2017-02-14T19:35:40.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Settings.dll">
+      <PackagePath>Plugin.Settings.dll</PackagePath>
+      <Modified>2017-02-14T19:37:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.ExternalMaps.dll">
+      <PackagePath>Plugin.ExternalMaps.dll</PackagePath>
+      <Modified>2017-02-14T19:42:26.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.ExternalMaps.Abstractions.dll">
+      <PackagePath>Plugin.ExternalMaps.Abstractions.dll</PackagePath>
+      <Modified>2017-02-14T19:42:26.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\Plugin.Messaging.dll">
+      <PackagePath>Plugin.Messaging.dll</PackagePath>
+      <Modified>2017-02-14T19:38:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7\bin\Debug\System.Net.Http.Primitives.dll">
+      <PackagePath>System.Net.Http.Primitives.dll</PackagePath>
+      <Modified>2017-02-14T19:35:32.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-02-14T14:09:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-02-14T14:09:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-02-14T14:09:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2017-02-14T14:09:24.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\App7.Windows.xr.xml">
+      <PackagePath>App7.Windows.xr.xml</PackagePath>
+      <Modified>2017-02-16T17:16:16.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2017-03-10T16:23:16.897</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2017-03-10T16:23:16.910</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT\PageControl.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT\PageControl.xbf</PackagePath>
+      <Modified>2017-02-13T12:08:10.307</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT\StepperControl.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT\StepperControl.xbf</PackagePath>
+      <Modified>2017-02-13T12:08:10.374</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT\Xamarin.Forms.Platform.WinRT.xr.xml">
+      <PackagePath>Xamarin.Forms.Platform.WinRT\Xamarin.Forms.Platform.WinRT.xr.xml</PackagePath>
+      <Modified>2017-02-13T12:08:10.392</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\FormsTextBoxStyle.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\FormsTextBoxStyle.xbf</PackagePath>
+      <Modified>2017-02-13T12:08:10.415</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\Resources.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\Resources.xbf</PackagePath>
+      <Modified>2017-02-13T12:08:10.435</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\TabletResources.xbf">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\TabletResources.xbf</PackagePath>
+      <Modified>2017-02-13T12:08:10.472</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\packages\Xamarin.Forms.2.3.3.180\lib\win81\Xamarin.Forms.Platform.WinRT.Tablet\Xamarin.Forms.Platform.WinRT.Tablet.xr.xml">
+      <PackagePath>Xamarin.Forms.Platform.WinRT.Tablet\Xamarin.Forms.Platform.WinRT.Tablet.xr.xml</PackagePath>
+      <Modified>2017-02-13T12:08:10.492</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\mylabs\Deliverys\source\svn\trunk\source\App7\App7.Windows\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2017-03-10T16:23:21.033</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

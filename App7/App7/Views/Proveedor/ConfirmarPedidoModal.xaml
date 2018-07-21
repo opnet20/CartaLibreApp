@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls2="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             Title="Confirmar Pedido"
+             x:Class="App7.Views.Proveedor.ConfirmarPedidoModal" BackgroundColor="White">
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem Activated="cancelar_Click" x:Name="cancelarBt" 
+                 Order="Primary" Priority="0" Icon="ic_cancel_white_24dp.png"/>
+    <ToolbarItem Activated="confirmar_Click" x:Name="confirmarBt" 
+                 Order="Primary" Priority="0" Icon="ic_check_circle_white_24dp.png"/>
+  </TabbedPage.ToolbarItems>
+  <Grid Margin="5">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+    <StackLayout>
+      <!--<Image  Source="detalle.png" HeightRequest="100"></Image>-->
+    
+      <!--<Label Text="CONFIRMAR PEDIDO" TextColor="#F06277"   Font="Bold,30" HorizontalOptions="Center" LineBreakMode="WordWrap"/>-->
+    
+      <!--Detalles-->
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="110"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="55"/>
+          </Grid.RowDefinitions>
+          <controls:CircleImage VerticalOptions="Center"
+                                BorderColor = "White"
+                                HorizontalOptions="Center"
+                                BorderThickness="3"
+                                Grid.ColumnSpan="2"
+                                Grid.RowSpan="2"
+                                Aspect="AspectFill">
+            <controls:CircleImage.WidthRequest>
+              <OnPlatform x:TypeArguments="x:Double" iOS="50" Android="100" WinPhone="75"/>
+            </controls:CircleImage.WidthRequest>
+            <controls:CircleImage.HeightRequest>
+              <OnPlatform x:TypeArguments="x:Double" iOS="30" Android="100" WinPhone="75"/>
+            </controls:CircleImage.HeightRequest>
+            <controls:CircleImage.Source>
+              <UriImageSource Uri="{Binding Solicitud.ImageUsuario}" CacheValidity="14" CachingEnabled="true"/>
+            </controls:CircleImage.Source>
+          </controls:CircleImage>
+          <ffimageloading:CachedImage
+                                  Source="{Binding Solicitud.ImagePlato}"
+                                  Aspect="AspectFill"
+                                  CacheDuration="14"
+                              
+                                  Grid.Column="1"
+                                  Grid.Row="1"
+                                  Margin="5,15,5,5" >
+          </ffimageloading:CachedImage>
+        </Grid>
+        <StackLayout Grid.Column="1">
+          <StackLayout  Orientation="Horizontal">
+            <!--<Label Text="Plato:" FontAttributes="Bold" Font="Large" LineBreakMode="WordWrap"/>-->
+            <Label Text="{Binding Solicitud.Plato}" Font="Large"
+                         FontAttributes="Bold" TextColor="#3498DB"  LineBreakMode="WordWrap"/>
+          </StackLayout>
+          <StackLayout  Orientation="Horizontal" >
+            <!--<Label Text="Usuario:" FontAttributes="Bold" Font="Medium"  LineBreakMode="WordWrap"/>-->
+            <Label Text="{Binding Solicitud.Usuario}" Font="Medium" LineBreakMode="WordWrap"/>
+          </StackLayout>
+          <StackLayout  Orientation="Horizontal">
+            <!--<Label Text="Dirección:" FontAttributes="Bold" Font="Medium" LineBreakMode="WordWrap"/>-->
+            <Label Text="{Binding Solicitud.Direccion}" Font="Medium" LineBreakMode="WordWrap"/>
+          </StackLayout>
+          <StackLayout  Orientation="Horizontal">
+            <!--<Label Text="Detalle:" FontAttributes="Bold" Font="Medium"  LineBreakMode="WordWrap"/>-->
+            <Label Text="{Binding Solicitud.Detalle}"  Font="Medium" TextColor="Red" LineBreakMode="WordWrap"/>
+          </StackLayout>
+          <StackLayout  Orientation="Horizontal">
+            <Button
+                x:Name="vermapaBT"
+                Text="UBICACIÓN"
+                BackgroundColor="#EF4F50"
+                TextColor="White"
+                FontSize="9"
+                HeightRequest="30"
+                Clicked="vermapa_Click"></Button>
+          </StackLayout>
+        </StackLayout>
+      </Grid>
+      <!---->
+      
+      <!--Campos de Precio-->
+      <Grid Padding="0" BackgroundColor="#FFFFCC" >
+          <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid  Grid.Column="0" >
+          <Grid.RowDefinitions>
+            <RowDefinition Height="47"/>
+            <RowDefinition Height="15"/>
+          </Grid.RowDefinitions>
+          <Entry  x:Name="envioEn"  Text="{Binding Solicitud.MEnvio}" TextColor="#333333"
+                  HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold"/>
+          <StackLayout Grid.Row="1" Margin="0,-5,0,3" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+            <Label Text="Envío S/."  FontAttributes="Bold" LineBreakMode="WordWrap" VerticalTextAlignment="Start" VerticalOptions="Start"/>
+          </StackLayout>
+        </Grid>
+        <Grid  Grid.Column="1">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="47"/>
+            <RowDefinition Height="15"/>
+          </Grid.RowDefinitions>
+          <Entry  x:Name="adicionalEn"  Text="{Binding Solicitud.MAdicional}"  TextColor="#333333"
+                  HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold"/>
+          <StackLayout Grid.Row="1" Margin="0,-5,0,3" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+            <Label Text="Adicionales S/."  FontAttributes="Bold" LineBreakMode="WordWrap" VerticalTextAlignment="Start" VerticalOptions="Start"/>
+          </StackLayout>
+        </Grid>
+        <Grid BackgroundColor="#FFFFCC" Grid.Column="2">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="47"/>
+            <RowDefinition Height="15"/>
+          </Grid.RowDefinitions>
+          <Entry  x:Name="totalEn" Text="{Binding Solicitud.MTotal}" TextColor="#333333"
+                  HorizontalTextAlignment="Center" FontSize="20" FontAttributes="Bold"/>
+          <StackLayout Grid.Row="1" Margin="0,-5,0,3" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Start">
+            <Label Text="Costo TOTAL S/."  FontAttributes="Bold" LineBreakMode="WordWrap" VerticalTextAlignment="Start" VerticalOptions="Start"/>
+          </StackLayout>
+        </Grid>
+      </Grid>
+      <!---->
+      
+      <!--<Entry Text="{Binding Solicitud.Respuesta}" Placeholder="Agrega un Comentario" FontSize="Small"></Entry>-->
+      <!--<Button
+                x:Name="vermapaBT"
+                Text="MAPA"
+                BackgroundColor="#EF4F50"
+                TextColor="White"
+                HeightRequest="50"
+                Grid.Column="0" Clicked="vermapa_Click"></Button>-->
+      <!--<Grid Padding="0" x:Name="botonesGrid">
+          <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"/>
+          <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+      
+        <Button 
+              x:Name="cancelarBT"
+              Text="RECHAZAR"
+              BackgroundColor="#EF4F50"
+              TextColor="White"
+              HeightRequest="50"
+              Grid.Column="0" Clicked="cancelar_Click"></Button>
+        <Button 
+              x:Name="confirmarBT"
+              Text="CONFIRMAR"
+              BackgroundColor="#73C6B6"
+              TextColor="White"
+              HeightRequest="50"
+              Grid.Column="1" Clicked="confirmar_Click"></Button>
+      </Grid>-->
+    </StackLayout>
+    <ListView  
+               IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+               x:Name="comentList" Margin="5,0,0,0"
+               Grid.Row="1"
+               ItemsSource="{Binding Comentarios}"
+               HasUnevenRows="true" 
+               IsPullToRefreshEnabled="True">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <controls:CircleImage VerticalOptions="Center"
+                    BorderColor = "White"
+                                  BorderThickness="3"
+                  Aspect="AspectFill">
+                <controls:CircleImage.WidthRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="55" Android="55" WinPhone="75"/>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="55" Android="55" WinPhone="75"/>
+                </controls:CircleImage.HeightRequest>
+                <controls:CircleImage.Source>
+                  <UriImageSource Uri="{Binding ImageUser}" CacheValidity="14" CachingEnabled="true"/>
+                </controls:CircleImage.Source>
+              </controls:CircleImage>
+              <StackLayout Grid.Column="1"
+                                      Padding="8"
+                                      Spacing="4"
+                                      VerticalOptions="Center">
+                <Label Text="{Binding NombreUsuario}" FontSize="Small"  FontAttributes="Bold" TextColor="#34495e" LineBreakMode="WordWrap"/>
+                <Label Text="{Binding Contenido}" FontSize="Small" LineBreakMode="WordWrap"/>
+                <Label Text="{Binding Fecha}" FontSize="10" TextColor="Gray" LineBreakMode="WordWrap"/>
+              </StackLayout>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <Grid Grid.Row="2" Margin="0,0,0,10" BackgroundColor="White" VerticalOptions="End">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Entry x:Name="comentarioET" Placeholder="Deja tu comentario" FontSize="Small"></Entry>
+        <Button x:Name="enviarBT" Grid.Column="1" BackgroundColor="#1abc9c"  TextColor="White"
+                  Text="Enviar" Clicked="Guardar_Click"></Button>
+        
+     </Grid>
+  </Grid>
+</ContentPage>

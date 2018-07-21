@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+            	xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:local="clr-namespace:App7;assembly=App7"
+              xmlns:design="clr-namespace:App7;assembly=App7"
+               xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls2="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+              Title="{Binding Plato.CPlato.Nombre}"
+             BackgroundColor="White"
+	          IsBusy="{Binding IsBusy}"
+             x:Class="App7.Views.PlatoPage">
+  <ContentPage.Content>
+    <Grid>
+      <ScrollView>
+        <Grid RowSpacing="10" Margin="0,10,0,0" ColumnSpacing="10">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"/>
+          <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="250" />
+          </Grid.RowDefinitions>
+          <!-- HEADER -->
+          <Grid Margin="5,0,0,0">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Margin="0,10,0,0">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+              </Grid.ColumnDefinitions>
+              <controls:CircleImage VerticalOptions="Center"
+                              BorderColor = "White"
+                              BorderThickness="3"
+                            Aspect="AspectFill">
+                <controls:CircleImage.WidthRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="55" Android="55" WinPhone="75"/>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                  <OnPlatform x:TypeArguments="x:Double" iOS="30" Android="55" WinPhone="75"/>
+                </controls:CircleImage.HeightRequest>
+                <controls:CircleImage.Source>
+                  <UriImageSource Uri="{Binding Plato.ImageUri}" CacheValidity="14" CachingEnabled="true"/>
+                  <!--<UriImageSource CacheValidity="14" CachingEnabled="true"/>-->
+                </controls:CircleImage.Source>
+              </controls:CircleImage>
+              <StackLayout Grid.Column="1"
+                           VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                  <Label Text="{Binding Plato.Usuario}" FontSize="Medium" FontAttributes="Bold" TextColor="#3498DB"/>
+                  <Image Source="{Binding Plato.ImageCategoria}" HeightRequest="20"></Image>
+                </StackLayout>
+                <Label Text="{Binding Plato.SubUsuario}" FontSize="10" Margin="5,-5,0,0" TextColor="Gray" LineBreakMode="WordWrap"/>
+               <!--<Label Margin="5,-10,0,0" Grid.Row="2" Text="{Binding Plato.CPlato.Categoria}"
+                          FontSize="Small" FontAttributes="Italic" TextColor="#bc5c29" LineBreakMode="WordWrap"/>-->
+              </StackLayout>
+            </Grid>
+            <Grid Margin="0,0,0,0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="2*"/>
+                  <ColumnDefinition Width="1*"/>  
+                </Grid.ColumnDefinitions>
+                <!--<Grid BackgroundColor="Black" Opacity="0.5" Grid.ColumnSpan="2">
+                                           
+                </Grid>-->
+                <StackLayout>
+                  <Label Margin="5,-8,0,-5" Grid.Row="1" Text="{Binding Plato.CPlato.Nombre}"
+                    FontSize="Large" TextColor="Black" FontAttributes="Bold" LineBreakMode="WordWrap">
+                  </Label>
+                  <Label Margin="5,-5,0,0" Grid.Row="2" Text="{Binding Plato.CPlato.Descripcion}"
+                          FontSize="Small" FontAttributes="Italic" TextColor="Black" LineBreakMode="WordWrap">
+                  </Label>
+                   <Label Margin="5,-10,0,0" Grid.Row="2" Text="{Binding Plato.CPlato.Categoria}"
+                          FontSize="Small" FontAttributes="Italic" TextColor="#bc5c29" LineBreakMode="WordWrap">
+                  </Label>
+                  <Label Text="{Binding Plato.CPlato.FechaCreacion, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}" FontSize="10" Margin="5,-3,0,0" 
+                            TextColor="Silver" LineBreakMode="WordWrap"/>
+                </StackLayout >
+                <StackLayout Margin="0,-8,0,-5" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="FillAndExpand" >
+                  <Grid  >
+                      <Button Text="{Binding Plato.CPlato.PrecioPedio}" IsVisible="{Binding Plato}"
+                            BackgroundColor="#fc8a25" HorizontalOptions="FillAndExpand" 
+                            TextColor="White" FontSize="12" Margin="0"
+                              FontAttributes="Bold"
+                            CommandParameter="{Binding Plato.CPlato}"
+                            Clicked="AgregarPedido_Click"></Button>
+                      <Button Text="OFERTAR" IsVisible="{Binding Plato.Solicitud}"
+                            BackgroundColor="#3498db" HorizontalOptions="FillAndExpand" 
+                            TextColor="White" FontSize="12" Margin="0"
+                              FontAttributes="Bold"
+                            CommandParameter="{Binding Plato.CPlato}"
+                              Clicked="Ofertar_Click"></Button>
+                      <Button Text="CERRAR" IsVisible="{Binding Plato.CerrarOferta}"
+                            BackgroundColor="#EF4F50" HorizontalOptions="FillAndExpand" 
+                            TextColor="White" FontSize="12" Margin="0"
+                              FontAttributes="Bold"
+                            CommandParameter="{Binding Plato.CPlato}"
+                              Clicked="CerrarOferta_Click"></Button>
+                  </Grid>
+                  <!--<Label Text="{Binding CPlato.Estado}"  
+                                HorizontalOptions="Center"
+                                    FontSize="10" FontAttributes="Bold" TextColor="Black" />-->
+                </StackLayout >
+              </Grid>
+          </Grid>
+          <!-- IMAGEN -->
+          <Grid Grid.Row="1"  BackgroundColor="#EF4F50">
+            <ffimageloading:CachedImage Aspect="AspectFill" 
+                                        CacheDuration="14"
+                                        DownsampleToViewSize="True"
+                                        FadeAnimationEnabled ="True"
+                                        Source="{Binding Plato.CPlato.ImageUri}">
+            </ffimageloading:CachedImage>
+            <Label Text="{Binding Plato.Sunombre}" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"
+                                          VerticalOptions="Center" HorizontalOptions="Center"></Label>
+           <Grid VerticalOptions="End" HorizontalOptions="End">
+                                       <Grid BackgroundColor="Black" Opacity="0.5">
+
+                                        </Grid>
+                                       <StackLayout>
+                                          <!--<Button Text="¡Visitanos!" WidthRequest="90"
+                                                HorizontalOptions="Center" VerticalOptions="End" 
+                                                BackgroundColor="#3498DB" FontAttributes="Bold"
+                                                CommandParameter="{Binding CProveedor._id}" Clicked="Proveedor_Click"
+                                                TextColor="White" FontSize="11" IsVisible="{Binding Plato}"
+                                                  HeightRequest="35"></Button>-->
+                                            <StackLayout Orientation="Horizontal" Margin="0,0,5,0" HorizontalOptions="End" Grid.Column="1">
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                                  <Grid>
+                                                    <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                          ImageHeightRequest = "30"
+			                                                                    ImageWidthRequest = "30"
+                                                                          WidthRequest = "45"
+                                                                          Source="ic_favorite_red_light_36dp.png"
+                                                                          CommandParameter="{Binding Plato.CPlato}"
+                                                                          Clicked="Like_Click"/>
+                                                    <controls2:ImageButton  BackgroundColor="Transparent"
+                                                                           ImageHeightRequest = "30"
+                                                                           ImageWidthRequest = "30"
+                                                                           WidthRequest = "45"
+                                                                           IsVisible = "{Binding Plato.LikeImg}"
+                                                                           Source="ic_favorite_white_36dp.png"
+                                                                           CommandParameter="{Binding Plato.CPlato}"
+                                                                           Clicked="Like_Click"/>
+                                                  </Grid>
+                                                    <Label x:Name="valoLB" VerticalOptions="Center" HorizontalOptions="End" TextColor="White"
+                                                          Text="{Binding Plato.CPlato.Valoracion}" LineBreakMode="NoWrap"
+                                                          FontAttributes="Bold" FontSize="25" Margin="1,0,1,0"/>
+                                       
+                                         
+                                                  <controls2:ImageButton  BackgroundColor="Transparent"  
+                                                                            ImageHeightRequest = "30"
+			                                                                      ImageWidthRequest = "30"
+                                                                          WidthRequest = "45"
+                                                                          Source="ic_chat_orange_700_36dp.png" 
+                                                                          />
+                                                    <Label VerticalOptions="Center" HorizontalOptions="End" TextColor="White"
+                                                            Text="{Binding Plato.CPlato.Comentarios}" LineBreakMode="NoWrap"
+                                                            FontAttributes="Bold" FontSize="25" Margin="1,0,1,0"/>
+                                                </StackLayout>
+                                            </StackLayout>
+                                              
+                                        </StackLayout>
+                                    </Grid>
+          </Grid>
+        </Grid>
+          <Grid Grid.Row="1" x:Name="gridList">
+          <ListView  RefreshCommand="{Binding GetPlatosCommand}"
+                    IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+             x:Name="comentList" Margin="5,0,0,0"
+             ItemsSource="{Binding Comentarios}"
+             HasUnevenRows="true" 
+             IsPullToRefreshEnabled="True">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Grid>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="Auto"/>
+                      <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <controls:CircleImage VerticalOptions="Center"
+                                    BorderColor = "White"
+                                                  BorderThickness="3"
+                                  Aspect="AspectFill">
+                                <controls:CircleImage.WidthRequest>
+                                  <OnPlatform x:TypeArguments="x:Double" iOS="55" Android="55" WinPhone="75"/>
+                                </controls:CircleImage.WidthRequest>
+                                <controls:CircleImage.HeightRequest>
+                                  <OnPlatform x:TypeArguments="x:Double" iOS="55" Android="55" WinPhone="75"/>
+                                </controls:CircleImage.HeightRequest>
+                                <controls:CircleImage.Source>
+                                  <UriImageSource Uri="{Binding ImageUser}" CacheValidity="14" CachingEnabled="true"/>
+                                </controls:CircleImage.Source>
+                              </controls:CircleImage>
+                    <StackLayout Grid.Column="1"
+                                           Padding="8"
+                                           Spacing="4"
+                                            VerticalOptions="Center">
+                      <Label Text="{Binding NombreUsuario}" FontSize="Small"  FontAttributes="Bold" TextColor="#34495e" LineBreakMode="WordWrap"/>
+                      <Label Text="{Binding Contenido}" FontSize="Small" LineBreakMode="WordWrap"/>
+                      <Label Text="{Binding Fecha}" FontSize="10" TextColor="Gray" LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                  </Grid>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </Grid>
+      </Grid>
+      </ScrollView>
+      <Grid HeightRequest="40" Margin="0,0,0,10" BackgroundColor="White" VerticalOptions="End">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+          <ColumnDefinition Width="100"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Entry x:Name="comentarioET" Placeholder="Deja tu comentario" FontSize="Small"></Entry>
+        <Button x:Name="enviarBT" Grid.Column="1" BackgroundColor="#1abc9c"  TextColor="White"
+                  Text="Enviar" Clicked="Guardar_Click"></Button>
+        
+      </Grid>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

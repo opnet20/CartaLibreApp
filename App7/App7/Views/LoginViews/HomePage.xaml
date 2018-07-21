@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             xmlns:telerik="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:local="clr-namespace:App7;assembly=App7"
+             x:Class="App7.Views.HomePage" Title="{Binding Title}"
+             BackgroundColor="White" IsBusy="{Binding IsBusy}">
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem Activated="OnToolbarButtonClick"  Order="Primary" Priority="0" Icon="hamburgerButtonIcon"/>
+  </TabbedPage.ToolbarItems>
+   <telerikPrimitives:RadSideDrawer x:Name="drawer" DrawerLength="250">
+      <telerikPrimitives:RadSideDrawer.MainContent>
+        <Grid>
+            <local:ProveedoresPage Title="Restaurantes" />
+  
+           <NavigationPage Title="Schedule" >
+                <x:Arguments>
+                    <local:ProveedoresPage/>
+                </x:Arguments>
+            </NavigationPage>
+          </Grid>
+         </telerikPrimitives:RadSideDrawer.MainContent>
+      <telerikPrimitives:RadSideDrawer.DrawerContent>
+        <Grid BackgroundColor="#826182" WidthRequest="220">
+          <ListView x:Name="drawerList" />
+        </Grid>
+      </telerikPrimitives:RadSideDrawer.DrawerContent>
+    </telerikPrimitives:RadSideDrawer>
+</TabbedPage >

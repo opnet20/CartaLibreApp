@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Views.UsuarioPage">
+  <ContentPage.Content>
+    <Grid  RowSpacing="0" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="130"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <Grid>
+        <Grid>
+          <Image>
+            <Image.Source>
+              <UriImageSource Uri="{Binding Proveedor.ImageUri}"
+               CacheValidity="14"
+               CachingEnabled="true"/>
+            </Image.Source>
+          </Image>
+        </Grid>
+        <Grid Opacity="0.5" BackgroundColor="Black" VerticalOptions="End" HeightRequest="35">
+        </Grid>
+        <StackLayout VerticalOptions="End" HeightRequest="35" Orientation="Horizontal">
+          <Label  VerticalOptions="Center" HorizontalOptions="Center"
+            FontSize="Small" VerticalTextAlignment="Center"
+            TextColor="White" Margin="2,0,2,0"
+            FontAttributes="Bold"
+            Text="44 Seguidores"
+              />
+          <Button Text="Seguir" Margin="2,0,2,0" Grid.Column="1" WidthRequest="90"
+                   HorizontalOptions="Center" VerticalOptions="Center"
+                                          BackgroundColor="#3498db" FontAttributes="Bold"
+                                          TextColor="White" FontSize="11"
+                                           HeightRequest="35"></Button>
+          <Button Text="Detalles" Margin="2,0,2,0" Grid.Column="2" WidthRequest="90"
+                   HorizontalOptions="Center" VerticalOptions="Center"
+                                          BackgroundColor="#EF4F50" FontAttributes="Bold"
+                                          TextColor="White" FontSize="11"
+                                           HeightRequest="35"></Button>
+        </StackLayout>
+      </Grid>
+      <Grid Grid.Row="1" BackgroundColor="#ecf0f1">
+        <Label
+              FontSize="Medium"
+              TextColor="#EF4F50" FontFamily="Comic"
+              FontAttributes="Italic" VerticalTextAlignment="Center" VerticalOptions="Center"
+              Text="NUESTRA CARTA" Margin="4"
+              HorizontalOptions="Center">
+          <Label.FontFamily>
+            <OnPlatform x:TypeArguments="x:String">
+              <!--<OnPlatform.iOS>Lobster-Regular</OnPlatform.iOS>-->
+              <OnPlatform.Android>Assets/fonts/Lobster-Regular.ttf</OnPlatform.Android>
+              <!--<OnPlatform.WinPhone>Assets/Fonts/Lobster-Regular.ttf#Lobster</OnPlatform.WinPhone>-->
+            </OnPlatform>
+          </Label.FontFamily>
+        </Label>
+      </Grid>
+      <!--<Label Grid.Row="1"
+                FontSize="Medium"
+                TextColor="#34495e"
+                FontAttributes="Bold"
+                Text="{Binding Proveedor.Descripcion}"
+                HorizontalOptions="Center"/>
+        <Label
+                  Grid.Row="2"
+                  FontSize="Small"
+                  TextColor="#34495e"
+                  Text="{Binding Proveedor.Direccion}"
+                  HorizontalOptions="Center"/>
+        <Label
+                  Grid.Row="3"
+                  FontSize="Small"
+                  TextColor="#34495e"
+                  HorizontalOptions="Center"
+                  Text="{Binding Proveedor.Referencia}"></Label>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="4">
+          <Label 
+                  FontSize="Small"
+                  TextColor="#34495e"
+                  Text="{Binding Proveedor.Distrito}"
+                 HorizontalOptions="Center"/>
+          <Label Text="-"></Label>
+          <Label
+                  FontSize="Small"
+                  TextColor="#34495e"
+                  Text="{Binding Proveedor.Ciudad}"
+                  HorizontalOptions="Center"/>
+        </StackLayout>-->
+
+      <ListView Grid.Row="6"
+            x:Name="PlatoList"
+            ItemsSource="{Binding Carta}"
+            SelectedItem="{Binding PlatoSelecc}"
+            HasUnevenRows="true">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid VerticalOptions="Start"  RowSpacing="0" >
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="2.5*"/>
+                  <ColumnDefinition Width="5*"/>
+                  <ColumnDefinition Width="2.5*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Image Grid.RowSpan="3" HeightRequest="30" WidthRequest="50" Margin="4" Aspect="AspectFill" Source="{Binding ImageUri}"></Image>
+                <Label Margin="0,2,0,0" Grid.Row="0" Grid.Column="1"
+                       Text="{Binding Nombre}" FontSize="Small" VerticalTextAlignment="Center"
+                       VerticalOptions="Center"
+                       FontAttributes="Bold" LineBreakMode="WordWrap">
+                </Label>
+                <StackLayout Orientation="Horizontal" Grid.Column="2">
+                  <Label
+                        Text="S/."
+                          TextColor="Green"
+                          FontSize="Small"
+                          FontAttributes="Bold" />
+                  <Label
+                      Text="{Binding CPlato.Precio}"
+                        TextColor="Green"
+                          FontSize="Small"
+                        FontAttributes="Bold" />
+                </StackLayout>
+                <Label Margin="0,0,0,0" Grid.Row="1" VerticalTextAlignment="Center"
+                       Text="{Binding Descripcion}" Grid.Column="1"
+                      FontSize="Small"  LineBreakMode="WordWrap">
+                </Label>
+                <Button Text="PEDIR"
+                      BackgroundColor="#F7A305"
+                      TextColor="White" FontSize="11"
+                      HeightRequest="35"
+                      CommandParameter="{Binding _id}"
+                      Grid.Row="1"
+                      Grid.Column="2" Clicked="AgregarPedido_Click"></Button>
+
+                <Grid Margin="0,0,0,2" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                  </Grid.ColumnDefinitions>
+                  <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Image VerticalOptions="Center" Source="heart.png" HeightRequest="18"> </Image>
+                    <Label VerticalOptions="Center" Text="8" FontSize="12" Margin="1,0,1,0"/>
+                    <Label VerticalOptions="Center" Text="Me gusta" FontSize="12" Margin="1,0,1,0"/>
+                    <Image VerticalOptions="Center" Source="Message.png" HeightRequest="18">
+                    </Image>
+
+                    <Label VerticalOptions="Center" Text="12" FontSize="12"  Margin="1,0,1,0"/>
+                    <Label VerticalOptions="Center" Text="Comentarios" FontSize="12"></Label>
+                  </StackLayout>
+                </Grid>
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

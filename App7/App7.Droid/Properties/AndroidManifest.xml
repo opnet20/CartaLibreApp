@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionName="0.2" package="cartalibrep.myapp" android:versionCode="2">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="23" />
+	<!--<application android:name="android.support.multidex.MultiDexApplication" android:largeHeap="true" android:label="Carta Libre" android:icon="@drawable/Logocl">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDwItRT7ItJaNbwJ0tZXO-uWl1dTEzASAY" />
+	</application>-->
+	<!--<permission android:name="android.permission.C2D_MESSAGE" android:protectionLevel="signature" />-->
+	<uses-permission android:name="android.permission.C2D_MESSAGE" />
+	<application android:icon="@drawable/Logocl" android:largeHeap="true" android:debuggable="false" android:label="Carta Libre">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyDwItRT7ItJaNbwJ0tZXO-uWl1dTEzASAY" />
+		<receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<category android:name="android" />
+			</intent-filter>
+		</receiver>
+	</application>
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+</manifest>

@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Views.Proveedores.TiendaPage"
+             BarTextColor="White"
+               xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls2="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:local="clr-namespace:App7.Views.Proveedores;assembly=App7"
+             Title="Mi Carta">
+  <TabbedPage.ToolbarItems>
+    <ToolbarItem Activated="AddCircleButtonClick" Order="Primary" Priority="0" Icon="ic_add_circle_white_24dp.png"/>
+    <ToolbarItem Activated="AddAlertButtonClick" Order="Primary" Priority="0" Icon="ic_add_alert_white_24dp.png"/>
+    <ToolbarItem Activated="EventButtonClick" Order="Primary" Priority="0" Icon="ic_event_available_white_24dp.png"/>
+  </TabbedPage.ToolbarItems>  
+  <TabbedPage.Children>
+    <ContentPage Title="Carta">
+       <Grid BackgroundColor="White">
+            <telerikDataControls:RadListView 
+                                                x:Name="PlatoList" VerticalOptions="FillAndExpand"
+                                                ItemsSource="{Binding PlatosCarta}"
+                                                 SelectedItem="{Binding PlatoSelecc}"
+                                                 BackgroundColor="White" >
+                <telerikDataControls:RadListView.ItemTemplate>
+                  <DataTemplate>
+                    <telerikListView:ListViewTemplateCell>
+                      <telerikListView:ListViewTemplateCell.View>
+                        <Grid>
+                        <Grid.ColumnDefinitions>
+                          <ColumnDefinition Width="3*"/>
+                          <ColumnDefinition Width="4*"/>
+                          <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions> 
+                        <Grid BackgroundColor="#EF4F50" Margin="5">
+                          <Image  HeightRequest="80" WidthRequest="80" 
+                               Aspect="AspectFill" Source="{Binding ImageUri}"></Image>
+                          <Label Text="{Binding Sunombre}" TextColor="White" FontSize="20" HorizontalTextAlignment="Center"
+                                                 VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                        </Grid>
+                        <StackLayout Grid.Column="1">
+                          <Label Text="{Binding Nombre}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                          <Label Text="{Binding Categoria}" Margin="0,-8,0,0" FontSize="Small" LineBreakMode="WordWrap"/>
+                          <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="-5">
+                              <!--<Image VerticalOptions="Center" Source="heart.png" HeightRequest="18"> </Image>-->
+                             <controls2:ImageButton  BackgroundColor="Transparent" 
+                                                                                ImageHeightRequest = "30"
+			                                                                          ImageWidthRequest = "30"
+                                                                                WidthRequest = "45"
+                                                                                Source="ic_favorite_red_light_36dp.png" 
+                                                                        
+                                                                                />
+                      
+                              <Label VerticalOptions="Center" Text="{Binding Valoracion}" FontSize="14" Margin="1,0,1,0"/>
+                                  
+                              <!--<Image VerticalOptions="Center" Source="Message.png" HeightRequest="18">
+                              </Image>-->
+                               <controls2:ImageButton  BackgroundColor="Transparent"  
+                                                                                  ImageHeightRequest = "30"
+			                                                                            ImageWidthRequest = "30"
+                                                                                WidthRequest = "45"
+                                                                                Source="ic_chat_orange_700_36dp.png" 
+                                                                        
+                                                                                />
+                                          
+                              <Label VerticalOptions="Center" Text="{Binding Comentarios}" FontSize="14"  Margin="1,0,1,0"/>
+                                  
+                            </StackLayout>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" HorizontalOptions="End">
+                          <StackLayout Orientation="Horizontal">
+                            <Label Text="S/."  Font="Bold,20"/>
+                            <Label Text="{Binding Precio}"  Font="Bold,20"/>
+                          </StackLayout>
+                          <Label Text="{Binding Estado}" HorizontalOptions="End" FontSize="Small" LineBreakMode="WordWrap"/>
+                        </StackLayout>
+                      </Grid>
+                      </telerikListView:ListViewTemplateCell.View>
+                   </telerikListView:ListViewTemplateCell>
+                </DataTemplate>
+              </telerikDataControls:RadListView.ItemTemplate>
+                <telerikDataControls:RadListView.GroupDescriptors>
+                  <telerikListView:PropertyGroupDescriptor PropertyName="Categoria"/>
+                </telerikDataControls:RadListView.GroupDescriptors>
+                <telerikDataControls:RadListView.GroupHeaderTemplate>
+                  <DataTemplate>
+                    <Grid BackgroundColor="#FFC153">
+                      <Label Text="{Binding }"  FontSize="Medium" TextColor="White" Margin="5" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    </Grid>
+                  </DataTemplate>
+                </telerikDataControls:RadListView.GroupHeaderTemplate>
+            </telerikDataControls:RadListView>
+              <!--<ListView
+				  ItemsSource="{Binding PlatosCarta}"
+          VerticalOptions="FillAndExpand" ItemSelected="LvM_ItemSelected"
+          HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+            
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>-->
+         <!--<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+           <Button Text="Plato" Margin="10"
+                                             VerticalOptions="End"
+                                             HorizontalOptions="End"
+                                             BackgroundColor="#34495e"
+                                             TextColor="White"
+                                             HeightRequest="50"
+                                             Clicked="Agregar_Click"
+                                           ></Button>
+         <Button Text="Oferta" Margin="10"
+                                             VerticalOptions="End"
+                                             HorizontalOptions="End"
+                                             BackgroundColor="#e74c3c"
+                                             TextColor="White"
+                                             HeightRequest="50"
+                                             Clicked="Agregar_Click"
+                                           ></Button>
+           <Button Text="Evento" Margin="10"
+                                             VerticalOptions="End"
+                                             HorizontalOptions="End"
+                                             BackgroundColor="#1abc9c"
+                                             TextColor="White"
+                                             HeightRequest="50"
+                                             Clicked="Agregar_Click"
+                                           ></Button>
+         </StackLayout>-->
+            
+       </Grid>
+    </ContentPage>
+    <ContentPage Title="Pedidos">
+      <Grid BackgroundColor="White">
+        <ListView
+           x:Name="solicitudesLV"
+             ItemsSource="{Binding Solicitudes}"
+            RefreshCommand="{Binding GetPedidosCommand}"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+             SelectedItem="{Binding  Solicitud}"
+             VerticalOptions="FillAndExpand"
+             HasUnevenRows="true">
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Grid>
+                    <Grid.Padding>
+                      <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.iOS>
+                          10,5,10,5
+                        </OnPlatform.iOS>
+                        <OnPlatform.Android>
+                          5,3,5,3
+                        </OnPlatform.Android>
+                        <OnPlatform.WinPhone>
+                          20,25,20,25
+                        </OnPlatform.WinPhone>
+                      </OnPlatform>
+                    </Grid.Padding>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="60"/>
+                      <ColumnDefinition Width="5.5*"/>
+                      <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                  
+                    <!--<Label Text="{Binding Cantidad}" FontSize="Medium" HorizontalOptions="Center" LineBreakMode="NoWrap"/>-->
+
+                    <Grid>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                      </Grid.ColumnDefinitions>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                      </Grid.RowDefinitions>
+                      <controls:CircleImage VerticalOptions="Center"
+                                            BorderColor = "White"
+                                            HorizontalOptions="Center"
+                                            BorderThickness="1"
+                                            Grid.ColumnSpan="2"
+                                            Grid.RowSpan="2"
+                                            Aspect="AspectFill">
+                        <controls:CircleImage.WidthRequest>
+                          <OnPlatform x:TypeArguments="x:Double" iOS="50" Android="55" WinPhone="75"/>
+                        </controls:CircleImage.WidthRequest>
+                        <controls:CircleImage.HeightRequest>
+                          <OnPlatform x:TypeArguments="x:Double" iOS="30" Android="55" WinPhone="75"/>
+                        </controls:CircleImage.HeightRequest>
+                        <controls:CircleImage.Source>
+                          <UriImageSource Uri="{Binding ImageUsuario}" CacheValidity="14" CachingEnabled="true"/>
+                        </controls:CircleImage.Source>
+                      </controls:CircleImage>
+                      <ffimageloading:CachedImage
+                                              Source="{Binding ImagePlato}"
+                                              Aspect="AspectFill"
+                                              CacheDuration="14"
+                              
+                                              Grid.Column="1"
+                                              Grid.Row="1"
+                                              Margin="0,5,0,0 " >
+                      </ffimageloading:CachedImage>
+                    </Grid>
+                  
+                    <StackLayout Grid.Column="1">
+                      <Label Text="{Binding Plato}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                      <Label Text="{Binding Usuario}" Margin="0,-3,0,0" FontSize="15" LineBreakMode="WordWrap"/>
+                      <StackLayout Orientation="Horizontal" Margin="0,-3,0,0">
+                        <!--<Label Text="Fecha:"  FontSize="12" LineBreakMode="WordWrap"/>-->  
+                        <Label Text="{Binding FechaEntrega, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"  FontSize="12" LineBreakMode="WordWrap"/>  
+                      </StackLayout>
+                      <StackLayout Orientation="Horizontal" Margin="0,-3,0,-6" HeightRequest="{Binding AltoMs}">
+                        <!--<ffimageloading:CachedImage Source="ic_message_red_light_24dp.png"
+                                                        Aspect="AspectFit"
+                                                         Grid.Column="0"
+                                                         Grid.Row="0" 
+                                                        HeightRequest="15"></ffimageloading:CachedImage>-->
+                        <Label Text="{Binding Msgs}"  FontSize="12" TextColor="Red" FontAttributes="Italic" LineBreakMode="WordWrap"/>
+                        <Label Text="Mensajes nuevos"  FontSize="12" TextColor="Red" FontAttributes="Italic" LineBreakMode="WordWrap"/>
+                      </StackLayout>
+                      <StackLayout Orientation="Horizontal">
+                        <!--<Label Text="Direccion:"  FontSize="12" LineBreakMode="WordWrap"/>-->  
+                        <Label Text="{Binding Direccion}"  FontSize="12" LineBreakMode="WordWrap"/>  
+                      </StackLayout>
+                    </StackLayout>
+                  
+                    <StackLayout Grid.Column="2" HorizontalOptions="End">
+                      <StackLayout Orientation="Horizontal">
+                        <Label Text="S/."  Font="Bold,20"/>
+                        <Label Text="{Binding Total}" Font="Bold,20"/>
+                      </StackLayout>  
+                      <Label Text="{Binding Estado}"  FontSize="10" LineBreakMode="WordWrap"/>  
+                    </StackLayout>
+                  
+                  </Grid>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+      </Grid>
+    </ContentPage>
+    <ContentPage x:Name="confirmadosCP" Title="Confirmados">
+      <Grid BackgroundColor="White">
+        <ListView
+           x:Name="confirmadosLV"
+          ItemsSource="{Binding Confirmados}"
+           SelectedItem="{Binding  Solicitud}"
+          VerticalOptions="FillAndExpand"
+          HasUnevenRows="true">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <ViewCell>
+                <Grid>
+                  <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                      <OnPlatform.iOS>
+                        10,5,10,5
+                      </OnPlatform.iOS>
+                      <OnPlatform.Android>
+                        5,3,5,3
+                      </OnPlatform.Android>
+                      <OnPlatform.WinPhone>
+                        20,25,20,25
+                      </OnPlatform.WinPhone>
+                    </OnPlatform>
+                  </Grid.Padding>
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="5.5*"/>
+                    <ColumnDefinition Width="4*"/>
+                  </Grid.ColumnDefinitions>
+
+                  <Label Text="{Binding Cantidad}" FontSize="Medium" HorizontalOptions="Center" LineBreakMode="NoWrap"/>
+
+                  <StackLayout Grid.Column="1">
+                    <Label Text="{Binding Plato}"  FontSize="Medium" LineBreakMode="WordWrap"/>
+                    <Label Text="{Binding Usuario}"  FontSize="15" LineBreakMode="WordWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                      <Label Text="Fecha:"  FontSize="12" LineBreakMode="WordWrap"/>
+                      <Label Text="{Binding FechaEntrega, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}"  FontSize="12" LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                      <Label Text="Direccion:"  FontSize="12" LineBreakMode="WordWrap"/>
+                      <Label Text="{Binding Direccion}"  FontSize="12" LineBreakMode="WordWrap"/>
+                    </StackLayout>
+                  </StackLayout>
+
+                  <StackLayout Grid.Column="2" HorizontalOptions="End">
+                    <StackLayout Orientation="Horizontal">
+                      <Label Text="S/."  Font="Bold,20"/>
+                      <Label Text="{Binding Total}" Font="Bold,20"/>
+                    </StackLayout>
+                    <Label Text="{Binding Estado}"  FontSize="10" LineBreakMode="WordWrap"/>
+                  </StackLayout>
+
+                </Grid>
+              </ViewCell>
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </Grid>
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>

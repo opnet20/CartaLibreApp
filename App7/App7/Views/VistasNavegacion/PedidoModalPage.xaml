@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+              xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             x:Class="App7.Views.PedidoModalPage">
+  <!--<popup:PopupPage.Animation>
+    <animations:ScaleAnimation
+      PositionIn="Center"
+      PositionOut="Center"
+      ScaleIn="1.2"
+      ScaleOut="0.8"
+      DurationIn="400"
+      DurationOut="300"
+      EasingIn="SinOut"
+      EasingOut="SinIn"
+      HasBackgroundAnimation="True"/>
+  </popup:PopupPage.Animation>-->
+  <ScrollView  Orientation = "Vertical" VerticalOptions="Start" HorizontalOptions="Center">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+        <Frame Padding="0">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+              <!--<Grid BackgroundColor="#EF4F50">
+                
+              </Grid>-->
+              <Grid HeightRequest="250" BackgroundColor="#EF4F50">
+                  <Label Text="{Binding PlatoPedidoModal.Sunombre}" TextColor="White" FontSize="25" HorizontalTextAlignment="Center"
+                                          VerticalOptions="Center" HorizontalOptions="Center"></Label>
+                  <Grid>
+                    
+                    <Image Aspect="AspectFill" Source="{Binding PlatoPedidoModal.CPlato.ImageUri}"></Image>
+                    <!--<Image>
+                      <Image.Source>
+                         <UriImageSource Uri="{Binding PlatoPedidoModal.CPlato.ImageUri}"
+            	            CacheValidity="14"
+					                CachingEnabled="true"/>
+                      </Image.Source>
+                    </Image>-->
+                  </Grid>
+                  
+                  <Grid VerticalOptions="Start" HeightRequest="50" Margin="0">
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="*"/>
+                      <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Opacity="0.5" BackgroundColor="Black" VerticalOptions="FillAndExpand" Grid.ColumnSpan="2" >
+                    </Grid>
+                    <StackLayout  Orientation="Vertical" Grid.Column="0">
+                      <Label Text="{Binding PlatoPedidoModal.CPlato.Nombre}"
+                             TextColor="White" FontSize="Large"  FontAttributes="Bold"
+                             LineBreakMode="WordWrap" Margin="4,0,0,0"/>
+                      <Label  VerticalOptions="Center" VerticalTextAlignment="Center"
+                        FontSize="Small" Margin="4,-8,0,0"
+                        TextColor="White" 
+                        Text="{Binding PlatoPedidoModal.CPlato.Descripcion}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                      <Label Text="S/."  FontSize="Large" FontAttributes="Bold" TextColor="White"/>
+                      <Label Text="{Binding Total}"  FontSize="Large" 
+                             FontAttributes="Bold" TextColor="White" Margin="0,0,4,0"/>
+                    </StackLayout>
+                  </Grid>
+                  <Grid VerticalOptions="End" HorizontalOptions="End">
+                    <Grid  Opacity="0.5" BackgroundColor="Black" >
+                      
+                    </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                      <Button 
+                          x:Name="masBT"
+                          Text="+"
+                          FontAttributes="Bold"
+                          HeightRequest="35"
+                          WidthRequest="40"
+                          BackgroundColor="#56ad9d"
+                          TextColor="White"
+                          FontSize="11"
+                          Clicked="mas_Click"></Button>
+                       <Button 
+                          x:Name="menosBT"
+                          Text="-"
+                          FontAttributes="Bold"
+                          HeightRequest="35"
+                          WidthRequest="40"
+                          BackgroundColor="Orange"
+                          TextColor="White"
+                          FontSize="11"
+                          Clicked="menos_Click"></Button>
+                       <Label Text="{Binding Cantidad}"  Margin="30,0,5,0" FontSize="Large" 
+                              VerticalOptions="Center" FontAttributes="Bold" TextColor="White"/>
+                    </StackLayout>
+                  </Grid>
+              </Grid>
+              <!--<Label Text="{Binding PlatoPedidoModal.CPlato.Nombre}" TextColor="#F06277" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" LineBreakMode="WordWrap"/>-->
+            
+              <!--<Grid Margin="5,0">
+                <Label Text="Total" HorizontalOptions="Start"
+                       FontSize="Medium" LineBreakMode="WordWrap"/>
+                <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="End">
+                  <Label Text="S/."  FontSize="Medium"/>
+                  <Label Text="{Binding Total}"  FontSize="Medium"/>
+                </StackLayout>
+              </Grid>-->
+              <StackLayout x:Name="direcST">
+                <StackLayout Orientation="Horizontal" Margin="5,0" >
+                  <Button 
+                      Text="Usar GPS"
+                          BackgroundColor="Orange"
+                          TextColor="White"
+                          HeightRequest="35"
+                          Grid.Column="1" Clicked="gps_Click"></Button>
+                    <Label x:Name="gpsLb" LineBreakMode="WordWrap" 
+                         VerticalTextAlignment="Center" Margin="5,0,0,0"></Label>
+                </StackLayout>
+                <StackLayout  Orientation="Horizontal" Margin="5,0" >
+                  <Image Source="ic_description_grey_500_18dp.png"></Image>
+                  <Entry x:Name="direcTB"
+                          Text="{Binding DetalleDireccion}"          
+                          Placeholder="Detalle Dirección" 
+                          HorizontalOptions="FillAndExpand"></Entry>
+                </StackLayout>
+              </StackLayout>
+              <StackLayout Orientation="Horizontal" Margin="5,0">
+                <Image Source="ic_description_grey_500_18dp.png"></Image>
+                <Entry x:Name="descTB" Placeholder="¿Desea agregar algo?" 
+                       Text="{Binding DetallePedido}"
+                        HorizontalOptions="FillAndExpand"></Entry>
+              </StackLayout>
+              <StackLayout Orientation="Horizontal" Margin="5,0">
+                <Image Source="ic_description_grey_500_18dp.png"></Image>
+                <Label x:Name="fechaLb" Text="Fecha y Hora de entrega" LineBreakMode="WordWrap" 
+                       VerticalTextAlignment="Center" FontSize="12"></Label>
+                <DatePicker x:Name="datepicker">
+                  <DatePicker.Format>dd/MM/yyyy</DatePicker.Format>
+                </DatePicker>
+                <TimePicker x:Name="timepicker"></TimePicker>
+              </StackLayout>
+              <Grid Margin="5,0">
+                 <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                      x:Name="cancelarBT"
+                      Text="CANCELAR"
+                      BackgroundColor="#EF4F50"
+                      TextColor="White"
+                      HeightRequest="50"
+                      Grid.Column="0" Clicked="cancelar_Click"></Button>
+                <Button 
+                  x:Name="confirmarBT"
+                  Text="CONFIRMAR"
+                      BackgroundColor="#56ad9d"
+                      TextColor="White"
+                      HeightRequest="50"
+                      Grid.Column="1" Clicked="confirmar_Click"></Button>
+              </Grid>
+   
+            </StackLayout>
+       </Frame>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
